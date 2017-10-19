@@ -1,0 +1,64 @@
+﻿@model ControlePatrimonio.Models.Filial
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Excluir</h2>
+
+<h3>Certeza voce deseja excluir esta filial?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpresaId)
+            @Html.HiddenFor(model => model.EmpresaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeFilial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista de Filiais", "Index")
+        </div>
+    }
+</div>

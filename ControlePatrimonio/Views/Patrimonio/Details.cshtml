@@ -1,0 +1,151 @@
+﻿@model ControlePatrimonio.Models.Patrimonio
+
+@{
+    ViewBag.Title = "Details";
+
+    if (Model.URLImage == null)
+    {
+        Model.URLImage = "Hello";
+    }
+
+
+    var img = new FileInfo(Model.URLImage);
+}
+
+<h2>Detailhes</h2>
+
+<div>
+    <h4>Patrimonio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaNome)
+        </dd>
+
+        <dt>
+            Filial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilialNome)
+        </dd>
+
+        <dt>
+            Fornecedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FornecedorNome)
+        </dd>
+
+        <dt>
+            Produto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdutoNome)
+        </dd>
+
+        <dt>
+            Data Aquisição
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAquisicao)
+        </dd>
+
+        <dt>
+            Data Cadastro
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+        <dt>
+            Descrição
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            Nota Fiscal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaFiscal)
+        </dd>
+
+        <dt>
+            N° Serie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroSerie)
+        </dd>
+
+        <dt>
+            N° Patrimonio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroPatrimonio)
+        </dd>
+
+        <dt>
+            Tempo garantia em meses
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoGarantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Licensa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Licensa)
+        </dd>
+
+        <dt>
+            Observação
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+
+        @if (Model.URLImage != "Hello")
+        {
+            <dt>
+                Image
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
+            </dd>
+        }
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para lista de items /  patrimonios", "Index")
+</p>
