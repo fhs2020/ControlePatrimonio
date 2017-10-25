@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ControlePatrimonio.Models;
+using System.IO;
 
 namespace ControlePatrimonio.Controllers
 {
@@ -29,10 +30,16 @@ namespace ControlePatrimonio.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produto produto = db.Produtoes.Find(id);
+
+            
+
             if (produto == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Image = produto.URLFoto;
+
             return View(produto);
         }
 
@@ -47,8 +54,21 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Modelo,Marca")] Produto produto)
+        public ActionResult Create(Produto produto, HttpPostedFileBase fileImage)
         {
+            if (fileImage != null)
+            {
+
+                string path = System.IO.Path.Combine(Server.MapPath("~/Images"),
+                                  Path.GetFileName(fileImage.FileName));
+
+                fileImage.SaveAs(path);
+
+                produto.URLFoto = path;
+
+                ViewBag.Message = "File uploaded successfully";
+            }
+
             if (ModelState.IsValid)
             {
                 db.Produtoes.Add(produto);
@@ -67,6 +87,10 @@ namespace ControlePatrimonio.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produto produto = db.Produtoes.Find(id);
+
+            ViewBag.Image = produto.URLFoto;
+
+
             if (produto == null)
             {
                 return HttpNotFound();
@@ -79,10 +103,24 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Modelo,Marca")] Produto produto)
+        public ActionResult Edit(Produto produto, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
             {
+                if (fileImage != null)
+                {
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/Images"),
+                         Path.GetFileName(fileImage.FileName));
+
+                    fileImage.SaveAs(path);
+
+                    produto.URLFoto = path;
+
+                    ViewBag.Message = "File uploaded successfully";
+                }
+
+
+
                 db.Entry(produto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -98,6 +136,9 @@ namespace ControlePatrimonio.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Produto produto = db.Produtoes.Find(id);
+
+            ViewBag.Image = produto.URLFoto;
+
             if (produto == null)
             {
                 return HttpNotFound();

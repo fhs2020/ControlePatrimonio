@@ -15,5 +15,6 @@ namespace ControlePatrimonio.Models
         public String Email { get; set; }
         public String Cidade { get; set; }
         public String UF { get; set; }
+        public String Pais { get; set; }
     }
 }

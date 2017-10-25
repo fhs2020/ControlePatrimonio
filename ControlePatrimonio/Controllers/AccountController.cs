@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ControlePatrimonio.Models;
+using System.Runtime.Remoting.Contexts;
+using System.Collections.Generic;
 
 namespace ControlePatrimonio.Controllers
 {
@@ -17,6 +19,8 @@ namespace ControlePatrimonio.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext context = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -139,6 +143,24 @@ namespace ControlePatrimonio.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var tipoUsuario = new List<SelectListItem>();
+            tipoUsuario.Add(new SelectListItem() { Text = "Employee", Value = "Emp" });
+            tipoUsuario.Add(new SelectListItem() { Text = "Admin", Value = "Admin" });
+ 
+            ViewBag.UsuarioPerfil = tipoUsuario;
+
+
+            var region = new List<SelectListItem>();
+            region.Add(new SelectListItem() { Text = "Rio de Janeiro", Value = "RJ" });
+            region.Add(new SelectListItem() { Text = "Amazonas", Value = "AM" });
+            region.Add(new SelectListItem() { Text = "Goias", Value = "GO" });
+            region.Add(new SelectListItem() { Text = "Tocantins", Value = "TO" });
+            region.Add(new SelectListItem() { Text = "São Paulo", Value = "SP" });
+
+            ViewBag.Region = region;
+
+            ViewBag.Filial = new SelectList(db.Filials, "Id", "NomeFilial");
+
             return View();
         }
 
@@ -149,9 +171,26 @@ namespace ControlePatrimonio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            var tipoUsuario = new List<SelectListItem>();
+            tipoUsuario.Add(new SelectListItem() { Text = "Employee", Value = "Emp" });
+            tipoUsuario.Add(new SelectListItem() { Text = "Admin", Value = "Admin" });
+
+            ViewBag.UsuarioPerfil = tipoUsuario;
+
+            var region = new List<SelectListItem>();
+            region.Add(new SelectListItem() { Text = "Rio de Janeiro", Value = "RJ" });
+            region.Add(new SelectListItem() { Text = "Amazonas", Value = "AM" });
+            region.Add(new SelectListItem() { Text = "Goias", Value = "GO" });
+            region.Add(new SelectListItem() { Text = "Tocantins", Value = "TO" });
+            region.Add(new SelectListItem() { Text = "São Paulo", Value = "SP" });
+
+            ViewBag.Region = region;
+
+            ViewBag.Filial = new SelectList(db.Filials, "Id", "NomeFilial");
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Region = model.Region, UsuarioPerfil = model.UsuarioPerfil, FilialId = model.FilialId };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

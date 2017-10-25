@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ControlePatrimonio.Models;
 using System.IO;
+using Microsoft.AspNet.Identity;
 
 namespace ControlePatrimonio.Controllers
 {
@@ -19,6 +20,12 @@ namespace ControlePatrimonio.Controllers
         // GET: Patrimonio
         public ActionResult Index(String search)
         {
+
+            var usuarioId = User.Identity.GetUserId();
+
+            var usuarioLogado = db.Users.Find(usuarioId);
+
+
             if (!String.IsNullOrEmpty(search))
             {
                 search.ToLower();
@@ -26,12 +33,19 @@ namespace ControlePatrimonio.Controllers
                 var listaPatrimonio = db.Patrimonios.ToList();
 
                 var patrimoniosSearched = listaPatrimonio.Where(s => s.EmpresaNome.ToLower().Contains(search) || s.FilialNome.ToLower().Contains(search) ||
-                           s.ProdutoNome.ToLower().Contains(search) || s.NumeroSerie.ToLower().Contains(search) || s.NumeroPatrimonio.ToLower().Contains(search) ||
-                           s.NotaFiscal.ToLower().Contains(search));
+                           s.ProdutoNome.ToLower().Contains(search) || s.NumeroSerie.ToLower().Contains(search) || s.NumeroPatrimonio.ToLower().Contains(search));
 
                 if (patrimoniosSearched != null)
                 {
-                    return View(patrimoniosSearched.ToList());
+                    if (usuarioLogado.UsuarioPerfil == "Emp")
+                    {
+                        return View(patrimoniosSearched.Where(x => x.UserId == usuarioId || x.FilialId == usuarioLogado.FilialId).ToList());
+                    }
+                    else
+                    {
+                        return View(patrimoniosSearched.ToList());
+                    }
+
                 }
                 else
                 {
@@ -40,7 +54,14 @@ namespace ControlePatrimonio.Controllers
             }
             else
             {
-              return View(db.Patrimonios.ToList());
+                if (usuarioLogado.UsuarioPerfil == "Emp")
+                {
+                    return View(db.Patrimonios.Where(x => x.UserId == usuarioId || x.Regiao == usuarioLogado.Region).ToList());
+                }
+                else
+                {
+                    return View(db.Patrimonios.ToList());
+                }
             }
         }
 
@@ -58,7 +79,7 @@ namespace ControlePatrimonio.Controllers
                 patrimonio.Observacao = "";
             }
 
-            ViewBag.Image = patrimonio.URLImage;
+            //ViewBag.Image = patrimonio.URLImage;
 
             if (patrimonio == null)
             {
@@ -72,11 +93,31 @@ namespace ControlePatrimonio.Controllers
         {
             var empresaLista = db.Empresas.ToList();
 
-            ViewBag.Empresa = new SelectList(empresaLista, "id", "nome");
+            var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
+            {
+                Id = c.Id,
+                NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
+                c.NomeFilial)
+            }).ToList();
+
+
+            ViewBag.Empresa = new SelectList(listaEmpresa, "id", "NomeEmpresa");
+
+            var usuarioId = User.Identity.GetUserId();
+
+            var usuarioLogado = db.Users.Find(usuarioId);
 
             var filialLista = db.Filials.ToList();
 
-            ViewBag.FilialLista = new SelectList(filialLista, "id", "NomeFilial");
+            if (usuarioLogado.UsuarioPerfil == "Emp")
+            {
+
+                ViewBag.FilialLista = new SelectList(filialLista.Where(x => x.Id == usuarioLogado.FilialId).ToList(), "id", "NomeFilial");
+            }
+            else
+            {
+                ViewBag.FilialLista = new SelectList(filialLista, "id", "NomeFilial");
+            }
 
             var fornecedoresLista = db.Fornecedors.ToList();
 
@@ -84,7 +125,15 @@ namespace ControlePatrimonio.Controllers
 
             var produtosLista = db.Produtoes.ToList();
 
-            ViewBag.ProdutosLista = new SelectList(produtosLista, "id", "Modelo");
+
+            var listaProduto = db.Produtoes.AsEnumerable().Select(c => new
+            {
+                Id = c.Id,
+                NomeProduto = string.Format("{0} - {1} - {2}", c.NomeProduto,
+                c.Marca, c.Modelo)
+            }).ToList();
+
+            ViewBag.ProdutosLista = new SelectList(listaProduto, "id", "NomeProduto");
 
             return View();
         }
@@ -95,10 +144,31 @@ namespace ControlePatrimonio.Controllers
         [HttpPost]
         public ActionResult Create(Patrimonio patrimonio, HttpPostedFileBase fileImage)
         {
+            var usuarioId = User.Identity.GetUserId();
+            var usuarioLogado = db.Users.Find(usuarioId);
+
+            var listaPatrimonio = db.Patrimonios.ToList();
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    foreach (var item in listaPatrimonio)
+                    {
+                        if (item.NumeroSerie == patrimonio.NumeroSerie)
+                        {
+                            throw new ApplicationException("Este número de serie já existe cadastrado com outro patrimonio");
+
+                        }
+
+                        if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
+                        {
+                            throw new ApplicationException("Este número de patrimonio já existe cadastrado com outro patrimonio");
+                        }
+                    }
+
+
+                    patrimonio.UserId = usuarioId;
 
                     if (fileImage != null)
                     {
@@ -109,11 +179,11 @@ namespace ControlePatrimonio.Controllers
 
                         fileImage.SaveAs(path);
 
-                        patrimonio.URLImage = path;
+                        //patrimonio.URLImage = path;
 
                         ViewBag.Message = "File uploaded successfully";
                     }
- 
+
 
                     if (patrimonio.FilialId != 0)
                     {
@@ -128,7 +198,7 @@ namespace ControlePatrimonio.Controllers
                     {
                         throw new ApplicationException("Selecione uma filial");
                     }
-        
+
                     if (patrimonio.ProdutoId != 0)
                     {
                         var produto = db.Produtoes.Find(patrimonio.ProdutoId);
@@ -157,7 +227,7 @@ namespace ControlePatrimonio.Controllers
 
                     throw new ApplicationException(ex.Message);
                 }
-            
+
                 return RedirectToAction("Index");
             }
 
@@ -175,7 +245,14 @@ namespace ControlePatrimonio.Controllers
 
             var empresaLista = db.Empresas.ToList();
 
-            ViewBag.Empresa = new SelectList(empresaLista, "id", "nome");
+            var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
+            {
+                Id = c.Id,
+                NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
+                                            c.NomeFilial)
+            }).ToList();
+
+            ViewBag.Empresa = new SelectList(listaEmpresa, "Id", "NomeEmpresa");
 
             var filialLista = db.Filials.ToList();
 
@@ -187,9 +264,16 @@ namespace ControlePatrimonio.Controllers
 
             var produtosLista = db.Produtoes.ToList();
 
-            ViewBag.ProdutosLista = new SelectList(produtosLista, "id", "Modelo");
+            var listaProduto = db.Produtoes.AsEnumerable().Select(c => new
+            {
+                Id = c.Id,
+                NomeProduto = string.Format("{0} - {1} - {2}", c.NomeProduto,
+                                            c.Marca, c.Modelo)
+            }).ToList();
 
-            ViewBag.Image = patrimonio.URLImage;
+            ViewBag.ProdutosLista = new SelectList(listaProduto, "Id", "NomeProduto");
+
+            //ViewBag.Image = patrimonio.URLImage;
 
             if (patrimonio == null)
             {
@@ -207,6 +291,20 @@ namespace ControlePatrimonio.Controllers
         {
             try
             {
+                var listaPatrimonio = db.Patrimonios.ToList();
+
+                foreach (var item in listaPatrimonio)
+                {
+                    if (item.NumeroSerie == patrimonio.NumeroSerie)
+                    {
+                        throw new ApplicationException("Este número de serie ja esta cadastrado com outro produto");
+                    }
+
+                    if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
+                    {
+                        throw new ApplicationException("Este número de patrimonio já esta cadastrado com outro produto");
+                    }
+                }
 
                 if (ModelState.IsValid)
                 {
@@ -217,25 +315,23 @@ namespace ControlePatrimonio.Controllers
 
                         fileImage.SaveAs(path);
 
-                        patrimonio.URLImage = path;
+                        //patrimonio.URLImage = path;
 
                         ViewBag.Message = "File uploaded successfully";
                     }
-
 
                     var filial = db.Filials.Find(patrimonio.FilialId);
                     patrimonio.FilialNome = filial.NomeFilial;
 
                     var empresa = db.Empresas.Find(filial.EmpresaId);
                     patrimonio.EmpresaNome = empresa.Nome;
+                    patrimonio.EmpresaId = empresa.Id;
 
                     var fornecedor = db.Fornecedors.Find(patrimonio.FornecedorId);
                     patrimonio.FornecedorNome = fornecedor.Nome;
 
                     var protudo = db.Produtoes.Find(patrimonio.ProdutoId);
                     patrimonio.ProdutoNome = protudo.Modelo;
-
-
 
                     db.Entry(patrimonio).State = EntityState.Modified;
                     db.SaveChanges();
@@ -246,7 +342,6 @@ namespace ControlePatrimonio.Controllers
             }
             catch (Exception ex)
             {
-
                 throw new ApplicationException(ex.Message);
             }
 
@@ -261,7 +356,7 @@ namespace ControlePatrimonio.Controllers
             }
             Patrimonio patrimonio = db.Patrimonios.Find(id);
 
-            ViewBag.Image = patrimonio.URLImage;
+            //ViewBag.Image = patrimonio.URLImage;
 
 
             if (patrimonio == null)
@@ -281,6 +376,19 @@ namespace ControlePatrimonio.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Action result for ajax call
+        [HttpPost]
+        public ActionResult GetMarcaByProdutoId(int produtoId)
+        {
+            List<Produto> produtoLista = new List<Produto>();
+            produtoLista = db.Produtoes.Where(m => m.Id == produtoId).ToList();
+
+            SelectList produtoMarca = new SelectList(produtoLista, "Id", "Marca", 0);
+            return Json(produtoMarca);
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

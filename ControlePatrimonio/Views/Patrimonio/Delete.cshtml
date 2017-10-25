@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Delete";
 
-    var img = new FileInfo(Model.URLImage);
+    //var img = new FileInfo(Model.URLImage);
 }
 
 <h2>Excluir</h2>
@@ -38,13 +38,13 @@
             @Html.DisplayFor(model => model.ProdutoNome)
         </dd>
 
-        <dt>
+        @*<dt>
             Data Aquisição
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DataAquisicao)
-        </dd>
+        </dd>*@
 
         <dt>
             Data Cadastro
@@ -62,21 +62,21 @@
             @Html.DisplayFor(model => model.Descricao)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Valor)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Valor)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             Nota Fiscal
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.NotaFiscal)
-        </dd>
+        </dd>*@
 
         <dt>
             N° Serie
@@ -118,13 +118,13 @@
             @Html.DisplayFor(model => model.Observacao)
         </dd>
 
-        <dt>
+        @*<dt>
             Imagem
         </dt>
 
         <dd>
             <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
-        </dd>
+        </dd>*@
 
     </dl>
 

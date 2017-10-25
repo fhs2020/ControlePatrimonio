@@ -47,7 +47,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Telefone,Observacao,Endereco,Email,Cidade,UF")] Fornecedor fornecedor)
+        public ActionResult Create([Bind(Include = "Id,Nome,Telefone,Observacao,Endereco,Email,Cidade,UF,Pais")] Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Telefone,Observacao,Endereco,Email,Cidade,UF")] Fornecedor fornecedor)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Telefone,Observacao,Endereco,Email,Cidade,UF,Pais")] Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {

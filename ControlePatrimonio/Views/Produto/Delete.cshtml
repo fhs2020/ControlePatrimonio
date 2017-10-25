@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Delete";
+
+   
 }
 
 <h2>Excluir</h2>
@@ -11,6 +13,19 @@
     <h4>Produto</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Modelo)
         </dt>
@@ -20,11 +35,51 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Marca)
+            Descrição
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Marca)
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            Nota Fiscal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaFiscal)
+        </dd>
+
+        <dt>
+            Tempo de garantia em meses
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoGarantia)
+        </dd>
+
+        <dt>
+            Data aquisição
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAquisicao)
+        </dd>
+
+        <dt>
+            Observação
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obsrvacao)
         </dd>
 
     </dl>

@@ -16,6 +16,13 @@ namespace ControlePatrimonio.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string Region { get; set; }
+
+        public string UsuarioPerfil { get; set; }
+
+        public int FilialId { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

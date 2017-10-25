@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ControlePatrimonio.Models.Patrimonio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Patrimonio</h2>
+
+<p>
+    @Html.ActionLink("Adicionar novo patrimonio", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+     
+        <div class="row" style="margin-left: 650px;">
+            <div class="col-lg-6">
+                @Html.Editor("Search", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <input type="submit" value="Pesquisar" class="btn btn-primary btn-md" />
+            <br />
+        </div>
+ 
+}
+<br />
+  
+<table class="table">
+    <tr>
+        <th>
+            Empresa
+        </th>
+        <th>
+            Filial
+        </th>
+
+        <th>
+            Produto
+        </th>
+        <th>
+            Valor
+        </th>
+ 
+        <th>
+           Número de serie
+        </th>
+        <th>
+            Número Patrimonio
+        </th>
+ 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpresaNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FilialNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdutoNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+ 
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroSerie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroPatrimonio)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
