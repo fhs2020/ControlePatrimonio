@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:46</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.dll">
-      <publishTime>10/19/2017 16:11:14</publishTime>
+      <publishTime>10/30/2017 13:21:47</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.pdb">
-      <publishTime>10/19/2017 16:11:14</publishTime>
+      <publishTime>10/30/2017 13:21:47</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -64,7 +64,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/03/2015 17:07:22</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>05/05/2017 09:59:26</publishTime>
+      <publishTime>10/16/2017 14:14:32</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
       <publishTime>02/13/2015 14:16:30</publishTime>
@@ -118,148 +118,148 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:02:28</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>04/13/2017 15:47:46</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.Process.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Claims.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Thread.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>04/13/2017 15:47:48</publishTime>
+      <publishTime>09/21/2017 23:42:00</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
       <publishTime>11/05/2016 04:55:30</publishTime>
@@ -304,13 +304,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2017 10:22:40</publishTime>
     </File>
     <File Include="Content/Images/computador.jpg">
-      <publishTime>10/18/2017 16:43:21</publishTime>
+      <publishTime>10/30/2017 11:01:30</publishTime>
     </File>
     <File Include="Content/Images/medidor de gas 22.jpg">
-      <publishTime>10/18/2017 15:40:49</publishTime>
+      <publishTime>10/30/2017 13:06:52</publishTime>
     </File>
     <File Include="Content/Images/medidor de gaz.jpg">
-      <publishTime>10/18/2017 16:42:58</publishTime>
+      <publishTime>10/30/2017 11:01:07</publishTime>
     </File>
     <File Include="Content/medidor de gas 22.jpg">
       <publishTime>10/18/2017 10:20:35</publishTime>
@@ -323,6 +323,129 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/smog-3.jpg">
       <publishTime>10/18/2017 10:20:35</publishTime>
+    </File>
+    <File Include="Content/themes/base/accordion.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/all.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/autocomplete.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/base.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/button.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/core.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/datepicker.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/dialog.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/draggable.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_444444_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_555555_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_777620_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_777777_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cc0000_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_ffffff_256x240.png">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.min.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/menu.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/progressbar.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/resizable.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectable.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectmenu.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/slider.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/sortable.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/spinner.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/tabs.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/theme.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/tooltip.css">
+      <publishTime>10/25/2017 16:23:02</publishTime>
     </File>
     <File Include="Content/uploads/computador.jpg">
       <publishTime>10/18/2017 15:40:03</publishTime>
@@ -352,16 +475,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:36</publishTime>
     </File>
     <File Include="Images/computador.jpg">
-      <publishTime>10/19/2017 15:00:42</publishTime>
+      <publishTime>10/30/2017 13:09:41</publishTime>
     </File>
     <File Include="Images/medidor de gas 22.jpg">
-      <publishTime>10/18/2017 09:38:46</publishTime>
+      <publishTime>10/26/2017 08:24:57</publishTime>
     </File>
     <File Include="Images/medidor de gaz.jpg">
-      <publishTime>10/18/2017 09:32:49</publishTime>
+      <publishTime>10/25/2017 14:57:58</publishTime>
     </File>
     <File Include="Images/smog-3.jpg">
       <publishTime>10/18/2017 09:55:17</publishTime>
+    </File>
+    <File Include="Scripts/arcnet.simple.format.js">
+      <publishTime>10/25/2017 15:43:20</publishTime>
+    </File>
+    <File Include="Scripts/arcnet.simple.format.min.js">
+      <publishTime>10/25/2017 15:43:20</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/16/2017 17:32:39</publishTime>
@@ -405,6 +534,114 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/globalize/unit.js">
       <publishTime>10/18/2017 16:02:11</publishTime>
     </File>
+    <File Include="Scripts/inputmask/bindings/inputmask.binding.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/bindings/inputmask.binding.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/dependencyLibs/inputmask.dependencyLib.jqlite.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/dependencyLibs/inputmask.dependencyLib.jqlite.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/dependencyLibs/inputmask.dependencyLib.jquery.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/dependencyLibs/inputmask.dependencyLib.jquery.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/dependencyLibs/inputmask.dependencyLib.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/dependencyLibs/inputmask.dependencyLib.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/global/document.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/global/document.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/global/window.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/global/window.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.date.extensions.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.date.extensions.min.js">
+      <publishTime>10/25/2017 16:11:43</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.extensions.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.extensions.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.numeric.extensions.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.numeric.extensions.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.phone.extensions.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.phone.extensions.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.regex.extensions.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/inputmask.regex.extensions.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/jquery.inputmask.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/jquery.inputmask.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-be.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-be.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-nl.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-nl.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-ru.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-ru.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-uk.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone-uk.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/inputmask/phone-codes/phone.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>10/16/2017 17:32:39</publishTime>
     </File>
@@ -413,6 +650,33 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/jquery-1.10.2.min.map">
       <publishTime>10/16/2017 17:32:39</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.12.4.js">
+      <publishTime>10/25/2017 16:23:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.12.4.min.js">
+      <publishTime>10/25/2017 16:23:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.12.4.min.map">
+      <publishTime>10/25/2017 16:23:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.js">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.min.js">
+      <publishTime>10/25/2017 16:23:02</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-i18n.js">
+      <publishTime>10/25/2017 16:23:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-i18n.min.js">
+      <publishTime>10/25/2017 16:23:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask.bundle.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery.inputmask.bundle.min.js">
+      <publishTime>10/25/2017 16:11:42</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.globalize.js">
       <publishTime>10/18/2017 16:01:53</publishTime>
@@ -483,47 +747,62 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
+    <File Include="Views/Categoria/Create.cshtml">
+      <publishTime>10/30/2017 09:29:07</publishTime>
+    </File>
+    <File Include="Views/Categoria/Delete.cshtml">
+      <publishTime>10/30/2017 09:30:26</publishTime>
+    </File>
+    <File Include="Views/Categoria/Details.cshtml">
+      <publishTime>10/30/2017 09:31:21</publishTime>
+    </File>
+    <File Include="Views/Categoria/Edit.cshtml">
+      <publishTime>10/30/2017 09:32:02</publishTime>
+    </File>
+    <File Include="Views/Categoria/Index.cshtml">
+      <publishTime>10/30/2017 09:33:46</publishTime>
+    </File>
     <File Include="Views/Empresa/Create.cshtml">
-      <publishTime>10/19/2017 11:51:03</publishTime>
+      <publishTime>10/30/2017 13:20:54</publishTime>
     </File>
     <File Include="Views/Empresa/Delete.cshtml">
-      <publishTime>10/17/2017 09:24:55</publishTime>
+      <publishTime>10/27/2017 12:58:22</publishTime>
     </File>
     <File Include="Views/Empresa/Details.cshtml">
-      <publishTime>10/17/2017 09:24:56</publishTime>
+      <publishTime>10/26/2017 16:43:07</publishTime>
     </File>
     <File Include="Views/Empresa/Edit.cshtml">
-      <publishTime>10/17/2017 09:24:56</publishTime>
+      <publishTime>10/27/2017 10:39:00</publishTime>
     </File>
     <File Include="Views/Empresa/Index.cshtml">
-      <publishTime>10/17/2017 09:24:56</publishTime>
+      <publishTime>10/26/2017 16:43:28</publishTime>
     </File>
     <File Include="Views/Filial/Create.cshtml">
-      <publishTime>10/17/2017 10:38:43</publishTime>
+      <publishTime>10/30/2017 13:20:33</publishTime>
     </File>
     <File Include="Views/Filial/Delete.cshtml">
-      <publishTime>10/17/2017 10:53:52</publishTime>
+      <publishTime>10/27/2017 10:55:25</publishTime>
     </File>
     <File Include="Views/Filial/Details.cshtml">
-      <publishTime>10/17/2017 10:42:18</publishTime>
+      <publishTime>10/25/2017 08:20:00</publishTime>
     </File>
     <File Include="Views/Filial/Edit.cshtml">
-      <publishTime>10/17/2017 10:30:39</publishTime>
+      <publishTime>10/30/2017 13:20:19</publishTime>
     </File>
     <File Include="Views/Filial/Index.cshtml">
       <publishTime>10/17/2017 10:09:48</publishTime>
     </File>
     <File Include="Views/Fornecedor/Create.cshtml">
-      <publishTime>10/19/2017 15:22:45</publishTime>
+      <publishTime>10/30/2017 13:19:13</publishTime>
     </File>
     <File Include="Views/Fornecedor/Delete.cshtml">
-      <publishTime>10/19/2017 15:22:40</publishTime>
+      <publishTime>10/27/2017 10:55:06</publishTime>
     </File>
     <File Include="Views/Fornecedor/Details.cshtml">
-      <publishTime>10/19/2017 15:22:14</publishTime>
+      <publishTime>10/25/2017 08:25:01</publishTime>
     </File>
     <File Include="Views/Fornecedor/Edit.cshtml">
-      <publishTime>10/19/2017 15:20:41</publishTime>
+      <publishTime>10/30/2017 13:20:05</publishTime>
     </File>
     <File Include="Views/Fornecedor/Index.cshtml">
       <publishTime>10/19/2017 15:21:30</publishTime>
@@ -556,34 +835,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Patrimonio/Create.cshtml">
-      <publishTime>10/19/2017 15:25:12</publishTime>
+      <publishTime>10/30/2017 11:53:51</publishTime>
     </File>
     <File Include="Views/Patrimonio/Delete.cshtml">
-      <publishTime>10/18/2017 15:59:10</publishTime>
+      <publishTime>10/26/2017 16:40:29</publishTime>
     </File>
     <File Include="Views/Patrimonio/Details.cshtml">
-      <publishTime>10/18/2017 16:13:01</publishTime>
+      <publishTime>10/26/2017 16:47:19</publishTime>
     </File>
     <File Include="Views/Patrimonio/Edit.cshtml">
-      <publishTime>10/19/2017 11:54:29</publishTime>
+      <publishTime>10/26/2017 16:40:54</publishTime>
     </File>
     <File Include="Views/Patrimonio/Index.cshtml">
-      <publishTime>10/17/2017 17:31:00</publishTime>
+      <publishTime>10/27/2017 14:27:55</publishTime>
     </File>
     <File Include="Views/Produto/Create.cshtml">
-      <publishTime>10/19/2017 15:26:31</publishTime>
+      <publishTime>10/30/2017 10:06:56</publishTime>
     </File>
     <File Include="Views/Produto/Delete.cshtml">
-      <publishTime>10/19/2017 15:26:49</publishTime>
+      <publishTime>10/30/2017 10:34:53</publishTime>
     </File>
     <File Include="Views/Produto/Details.cshtml">
-      <publishTime>10/19/2017 15:27:04</publishTime>
+      <publishTime>10/30/2017 10:29:20</publishTime>
     </File>
     <File Include="Views/Produto/Edit.cshtml">
-      <publishTime>10/19/2017 15:27:19</publishTime>
+      <publishTime>10/30/2017 10:15:53</publishTime>
     </File>
     <File Include="Views/Produto/Index.cshtml">
-      <publishTime>10/19/2017 15:37:42</publishTime>
+      <publishTime>10/30/2017 10:35:49</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/16/2017 17:32:43</publishTime>
@@ -592,7 +871,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/18/2017 10:36:13</publishTime>
+      <publishTime>10/30/2017 09:27:31</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/18/2017 10:33:36</publishTime>
@@ -604,7 +883,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/19/2017 15:42:38</publishTime>
+      <publishTime>10/30/2017 13:21:48</publishTime>
     </File>
   </ItemGroup>
 </Project>

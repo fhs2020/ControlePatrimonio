@@ -100,6 +100,9 @@ namespace ControlePatrimonio.Controllers
                 c.NomeFilial)
             }).ToList();
 
+            var categoriaList = db.Categorias.ToList();
+
+            ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
 
             ViewBag.Empresa = new SelectList(listaEmpresa, "id", "NomeEmpresa");
 
@@ -123,17 +126,21 @@ namespace ControlePatrimonio.Controllers
 
             ViewBag.FornecedoresLista = new SelectList(fornecedoresLista, "id", "Nome");
 
-            var produtosLista = db.Produtoes.ToList();
+            var produtosLista = db.Produtos.ToList();
 
 
-            var listaProduto = db.Produtoes.AsEnumerable().Select(c => new
+            var listaProduto = db.Produtos.AsEnumerable().Select(c => new
             {
                 Id = c.Id,
                 NomeProduto = string.Format("{0} - {1} - {2}", c.NomeProduto,
                 c.Marca, c.Modelo)
             }).ToList();
 
-            ViewBag.ProdutosLista = new SelectList(listaProduto, "id", "NomeProduto");
+            // ViewBag.ProdutosLista = new SelectList(listaProduto, "id", "NomeProduto");
+
+            var listaProducts = new List<Produto>();
+
+            ViewBag.ProdutosLista = new SelectList(listaProducts, "id", "NomeProduto");
 
             return View();
         }
@@ -201,7 +208,7 @@ namespace ControlePatrimonio.Controllers
 
                     if (patrimonio.ProdutoId != 0)
                     {
-                        var produto = db.Produtoes.Find(patrimonio.ProdutoId);
+                        var produto = db.Produtos.Find(patrimonio.ProdutoId);
                         patrimonio.ProdutoNome = produto.Modelo;
                     }
                     else
@@ -234,6 +241,40 @@ namespace ControlePatrimonio.Controllers
             return View(patrimonio);
         }
 
+
+        [HttpPost]
+        public ActionResult GetProdutoByCategoriaID(int? categoriaId)
+        {
+            if (categoriaId != null)
+            {
+                var categoria = db.Categorias.Find(categoriaId);
+
+                List<Produto> objproduto = new List<Produto>();
+                objproduto = db.Produtos.Where(m => m.CategoriaID == categoriaId).ToList();
+
+                //SelectList produtoSelectList = new SelectList(objproduto, "id", "NomeProduto");
+
+                //var listaProdutosSelect = db.Produtos.Where(x => x.CategoriaID == categoriaId).ToList();
+
+                var listaProduto = objproduto.AsEnumerable().Select(c => new
+                {
+                    Id = c.Id,
+                    NomeProduto = string.Format("{0} - {1} - {2}", c.NomeProduto, c.Marca, c.Modelo)
+                }).ToList();
+
+
+                var selectList = new SelectList(listaProduto, "id", "NomeProduto");
+
+                return Json(selectList);
+            }
+            else
+            {
+                return Json("");
+            }
+
+        }
+
+
         // GET: Patrimonio/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -262,9 +303,9 @@ namespace ControlePatrimonio.Controllers
 
             ViewBag.FornecedoresLista = new SelectList(fornecedoresLista, "id", "Nome");
 
-            var produtosLista = db.Produtoes.ToList();
+            var produtosLista = db.Produtos.ToList();
 
-            var listaProduto = db.Produtoes.AsEnumerable().Select(c => new
+            var listaProduto = db.Produtos.AsEnumerable().Select(c => new
             {
                 Id = c.Id,
                 NomeProduto = string.Format("{0} - {1} - {2}", c.NomeProduto,
@@ -293,18 +334,18 @@ namespace ControlePatrimonio.Controllers
             {
                 var listaPatrimonio = db.Patrimonios.ToList();
 
-                foreach (var item in listaPatrimonio)
-                {
-                    if (item.NumeroSerie == patrimonio.NumeroSerie)
-                    {
-                        throw new ApplicationException("Este número de serie ja esta cadastrado com outro produto");
-                    }
+                //foreach (var item in listaPatrimonio)
+                //{
+                //    if (item.NumeroSerie == patrimonio.NumeroSerie)
+                //    {
+                //        throw new ApplicationException("Este número de serie ja esta cadastrado com outro produto");
+                //    }
 
-                    if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
-                    {
-                        throw new ApplicationException("Este número de patrimonio já esta cadastrado com outro produto");
-                    }
-                }
+                //    if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
+                //    {
+                //        throw new ApplicationException("Este número de patrimonio já esta cadastrado com outro produto");
+                //    }
+                //}
 
                 if (ModelState.IsValid)
                 {
@@ -330,8 +371,17 @@ namespace ControlePatrimonio.Controllers
                     var fornecedor = db.Fornecedors.Find(patrimonio.FornecedorId);
                     patrimonio.FornecedorNome = fornecedor.Nome;
 
-                    var protudo = db.Produtoes.Find(patrimonio.ProdutoId);
-                    patrimonio.ProdutoNome = protudo.Modelo;
+                    var protudo = db.Produtos.Find(patrimonio.ProdutoId);
+                    patrimonio.ProdutoNome = protudo.NomeProduto;
+
+                    var local = db.Set<Patrimonio>()
+                         .Local
+                         .FirstOrDefault(f => f.Id == patrimonio.Id);
+                    if (local != null)
+                    {
+                        db.Entry(local).State = EntityState.Detached;
+                    }
+
 
                     db.Entry(patrimonio).State = EntityState.Modified;
                     db.SaveChanges();
@@ -382,7 +432,7 @@ namespace ControlePatrimonio.Controllers
         public ActionResult GetMarcaByProdutoId(int produtoId)
         {
             List<Produto> produtoLista = new List<Produto>();
-            produtoLista = db.Produtoes.Where(m => m.Id == produtoId).ToList();
+            produtoLista = db.Produtos.Where(m => m.Id == produtoId).ToList();
 
             SelectList produtoMarca = new SelectList(produtoLista, "Id", "Marca", 0);
             return Json(produtoMarca);

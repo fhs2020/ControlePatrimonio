@@ -2,6 +2,14 @@
 
 @{
     ViewBag.Title = "Details";
+
+    if (Model.URLFoto == null)
+    {
+        Model.URLFoto = "Hello";
+    }
+
+
+    var img = new FileInfo(Model.URLFoto);
 }
 
 <h2>Detalhes</h2>
@@ -10,12 +18,23 @@
     <h4>Produto</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.Modelo)
+            Categoria
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Modelo)
+            @Html.DisplayFor(model => model.Categoria.TipoCategoria)
+        </dd>
+
+
+
+        <dt>
+            Produto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProduto)
         </dd>
 
         <dt>
@@ -25,13 +44,76 @@
         <dd>
             @Html.DisplayFor(model => model.Marca)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
+            @Html.DisplayNameFor(model => model.Modelo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tipo)
+            @Html.DisplayFor(model => model.Modelo)
         </dd>
+
+        <dt>
+            Descrição
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            Nota Fiscal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaFiscal)
+        </dd>
+
+        <dt>
+            Tempo de garantia em meses
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoGarantia)
+        </dd>
+
+        <dt>
+            Data aquisição
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAquisicao)
+        </dd>
+
+        <dt>
+            Observação
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obsrvacao)
+        </dd>
+
+
+        @if (Model.URLFoto != "Hello")
+        {
+            <dt>
+                Foto
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
+            </dd>
+        }
+
+
     </dl>
 </div>
 <p>

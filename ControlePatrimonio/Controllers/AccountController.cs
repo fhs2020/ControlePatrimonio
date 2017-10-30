@@ -171,6 +171,13 @@ namespace ControlePatrimonio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (model.FilialId == 0 || model.FilialId == null)
+            {
+                model.FilialId = 1;
+
+                model.Region = "Goias";
+            }
+
             var tipoUsuario = new List<SelectListItem>();
             tipoUsuario.Add(new SelectListItem() { Text = "Employee", Value = "Emp" });
             tipoUsuario.Add(new SelectListItem() { Text = "Admin", Value = "Admin" });

@@ -10,11 +10,14 @@ namespace ControlePatrimonio.Models
     {
         public int Id { get; set; }
         public String NomeProduto { get; set; }
+        public int CategoriaID { get; set; }
+        public Categoria Categoria { get; set; }
         public String Modelo { get; set; }
         public String Marca { get; set; }
         public String Obsrvacao { get; set; }
         public String URLFoto { get; set; }
         public String Descricao { get; set; }
+        
 
         [DataType(DataType.Currency)]
         public float Valor { get; set; }

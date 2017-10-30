@@ -4,13 +4,13 @@
     ViewBag.Title = "Edit";
 
 
-    if (Model.URLImage == null)
-    {
-        Model.URLImage = "Hello";
-    }
+    //if (Model.URLImage == null)
+    //{
+    //    Model.URLImage = "Hello";
+    //}
 
 
-    var img = new FileInfo(Model.URLImage);
+    //var img = new FileInfo(Model.URLImage);
 }
 
 <h2>Editar</h2>
@@ -20,7 +20,7 @@
                                            new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.URLImage)
+    @*@Html.HiddenFor(model => model.URLImage)*@
     
     <div class="form-horizontal">
         <h4>Patrimonio</h4>
@@ -32,9 +32,9 @@
  
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FilialId, "Filial", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FilialId, "Empresa - Filial", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.FilialId, (SelectList)ViewBag.FilialLista, new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.FilialId, (SelectList)ViewBag.Empresa, new { @class = "form-control" })
             </div>
         </div>
 
@@ -47,18 +47,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProdutoId, "Produto", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProdutoId, "Produto - Marca - Modelo", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ProdutoId, (SelectList)ViewBag.ProdutosLista, new { @class = "form-control" })
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DataAquisicao, "Data aquisição", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DataAquisicao, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control" } })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Descricao, "Descrição", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -68,21 +68,21 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control", @data_val = "false" } })
                 @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.NotaFiscal, "Nota Fiscal", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NotaFiscal, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NotaFiscal, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.NumeroSerie, "N° Serie", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -109,10 +109,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Licensa, "Licensa", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Licensa, "Licença", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Licensa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Licensa, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -124,18 +123,16 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.URLImage, "Nova Imagem", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.URLImage, new { htmlAttributes = new { @class = "form-control" } })*@
                 <input type="file" name="fileImage" class="form-control" /><br><br>
                 <br><br>
-
             </div>
-        </div>
+        </div>*@
 
 
-        @if (img.Name != "Hello")
+        @*@if (img.Name != "Hello")
         {
             <div class="form-group">
                 @Html.LabelFor(model => model.URLImage, "Imagem", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -143,7 +140,7 @@
                     <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
                 </div>
             </div>
-        }
+        }*@
 
 
         <div class="form-group">

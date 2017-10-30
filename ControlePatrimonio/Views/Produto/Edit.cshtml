@@ -8,12 +8,10 @@
         Model.URLFoto = "Hello";
     }
 
-
     var img = new FileInfo(Model.URLFoto);
 }
 
 <h2>Editar</h2>
-
 
 @using (Html.BeginForm("Edit", "Produto", FormMethod.Post,
                                                        new { enctype = "multipart/form-data" }))
@@ -26,6 +24,22 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoriaID, "Categoria", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CategoriaID, (SelectList)ViewBag.Categoria, "selecione uma categoria", new { @class = "form-control" })
+
+                <div class="col-md-10">
+                    <a class="button" href="@Url.Content("~/Categoria/Create")"
+                       id="genreAddLink">Adicionar nova categoria</a>
+                </div>
+
+                @Html.ValidationMessageFor(model => model.NomeProduto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.NomeProduto, "Produto", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -130,5 +144,48 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+
+<script>
+    $(document).ready(function () {
+
+        $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+        $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+        $("#CEP").inputmask("mask", { "mask": "99999-999" });
+        $("#DataAquisicao").inputmask("mask", { "mask": "99/99/9999" });
+
+
+       
+    });
+
+            //$("#NomeProduto").keypress(function (event) {
+            //    var inputValue = event.charCode;
+            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            //        event.preventDefault();
+            //    }
+            //});
+
+            //$("#Cidade").keypress(function (event) {
+            //    var inputValue = event.charCode;
+            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            //        event.preventDefault();
+            //    }
+            //});
+
+            //$("#Estado").keypress(function (event) {
+            //    var inputValue = event.charCode;
+            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            //        event.preventDefault();
+            //    }
+            //});
+
+            //$("#Pais").keypress(function (event) {
+            //    var inputValue = event.charCode;
+            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            //        event.preventDefault();
+            //    }
+            //});
+
+</script>
 }

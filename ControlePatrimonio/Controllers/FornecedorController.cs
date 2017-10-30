@@ -47,7 +47,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Telefone,Observacao,Endereco,Email,Cidade,UF,Pais")] Fornecedor fornecedor)
+        public ActionResult Create(Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Telefone,Observacao,Endereco,Email,Cidade,UF,Pais")] Fornecedor fornecedor)
+        public ActionResult Edit(Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
@@ -107,13 +107,28 @@ namespace ControlePatrimonio.Controllers
 
         // POST: Fornecedor/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Fornecedor fornecedor = db.Fornecedors.Find(id);
+
+            var patrimonioLista = db.Patrimonios.ToList();
+
+            var fornecedorPatrimonio = patrimonioLista.Where(x => x.FornecedorId == id).SingleOrDefault();
+
+            if (fornecedorPatrimonio != null)
+            {
+                //throw new ApplicationException("Não é possivel excluir, existe um patrimonio cadastrado para este fornecedor.");
+
+                var result = new { Success = "False", Message = "Não é possivel excluir, existe um patrimonio cadastrado para este fornecedor." };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
             db.Fornecedors.Remove(fornecedor);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            var resultSucesso = new { Success = "true", Message = "Fornecedor excluido com sucesso!" };
+            return Json(resultSucesso, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

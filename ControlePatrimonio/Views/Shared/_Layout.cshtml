@@ -25,6 +25,7 @@
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Empresa", "Index", "Empresa")</li>
                         <li>@Html.ActionLink("Filial", "Index", "Filial")</li>
+                        <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
                         <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
                         <li>@Html.ActionLink("Fornecedor", "Index", "Fornecedor")</li>
                         <li>@Html.ActionLink("Cadastrar Patrimonio", "Index", "Patrimonio")</li>
@@ -44,6 +45,13 @@
             <p>&copy; @DateTime.Now.Year - Representação Nova Geração - Controle de Patrimonio</p>
         </footer>
     </div>
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="~/Scripts/inputmask/inputmask.js"></script>
+    <script src="~/Scripts/jquery.validate.globalize.min.js"></script>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

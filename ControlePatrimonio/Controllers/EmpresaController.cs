@@ -47,7 +47,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Telefone")] Empresa empresa)
+        public ActionResult Create(Empresa empresa)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Telefone")] Empresa empresa)
+        public ActionResult Edit(Empresa empresa)
         {
             if (ModelState.IsValid)
             {
@@ -107,13 +107,28 @@ namespace ControlePatrimonio.Controllers
 
         // POST: Empresa/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Empresa empresa = db.Empresas.Find(id);
+
+            var filial = db.Filials.ToList();
+
+            var empresaFilial = filial.Where(x => x.EmpresaId == id).SingleOrDefault();
+
+            if (empresaFilial != null)
+            {
+                // throw new ApplicationException("Não é possivel excluir esta empresa! Existe uma filial cadastrada para esta empresa");
+
+                var result = new { Success = "False", Message = "Não é possivel excluir esta empresa! Existe uma filial cadastrada para esta empresa" };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
             db.Empresas.Remove(empresa);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            var resultSucesso = new { Success = "true", Message = "Empresa Excluida com sucesso!" };
+            return Json(resultSucesso, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

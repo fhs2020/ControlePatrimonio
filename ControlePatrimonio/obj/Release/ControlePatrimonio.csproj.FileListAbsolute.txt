@@ -126,3 +126,5 @@ C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\bin\Co
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\bin\ControlePatrimonio.dll
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\bin\ControlePatrimonio.pdb
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.csprojResolveAssemblyReference.cache
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.First_Migration.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.csproj.GenerateResource.Cache

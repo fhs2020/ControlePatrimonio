@@ -17,9 +17,66 @@ namespace ControlePatrimonio.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produto
-        public ActionResult Index()
+        public ActionResult Index(String search)
         {
-            return View(db.Produtoes.ToList());
+            var produtoLista = db.Produtos.ToList();
+
+            var listaDeProdutos = new List<Produto>();
+
+            foreach(var item in produtoLista)
+            {
+                var categoria = db.Categorias.Find(item.CategoriaID);
+
+                item.Categoria = new Categoria();
+
+                item.Categoria.TipoCategoria = categoria.TipoCategoria;
+
+                item.Categoria.ID = categoria.ID;
+
+                listaDeProdutos.Add(item);
+
+            }
+
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                search.ToLower();
+
+                var listaProdutosSearch = db.Produtos.ToList();
+
+                var novaListaProdutos = new List<Produto>();
+
+                foreach (var item in listaDeProdutos)
+                {
+                    var categoriaProdutoSearched = db.Categorias.Find(item.CategoriaID);
+
+                    item.Categoria = new Categoria();
+
+                    item.Categoria.TipoCategoria = categoriaProdutoSearched.TipoCategoria;
+                    item.CategoriaID = categoriaProdutoSearched.ID;
+
+                    novaListaProdutos.Add(item);
+                }
+
+                var produtosSearched = novaListaProdutos.Where(s => s.Categoria.TipoCategoria.ToLower().Contains(search) || s.Marca.ToLower().Contains(search) ||
+                           s.Modelo.ToLower().Contains(search) || s.NomeProduto.ToLower().Contains(search)).ToList();
+
+                if (produtosSearched != null)
+                {
+                        return View(produtosSearched);
+                }
+                else
+                {
+                    return View();
+                }
+             
+            }
+            else
+            {
+                return View(listaDeProdutos.ToList());
+            }
+
+            
         }
 
         // GET: Produto/Details/5
@@ -29,9 +86,13 @@ namespace ControlePatrimonio.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
+            Produto produto = db.Produtos.Find(id);
 
-            
+            var categoria = db.Categorias.Find(produto.CategoriaID);
+
+            produto.Categoria = new Categoria();
+
+            produto.Categoria.TipoCategoria = categoria.TipoCategoria;
 
             if (produto == null)
             {
@@ -46,6 +107,11 @@ namespace ControlePatrimonio.Controllers
         // GET: Produto/Create
         public ActionResult Create()
         {
+            var categoriaLista = db.Categorias.ToList();
+
+            ViewBag.Categoria = new SelectList(categoriaLista, "ID", "TipoCategoria");
+
+
             return View();
         }
 
@@ -56,6 +122,11 @@ namespace ControlePatrimonio.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Produto produto, HttpPostedFileBase fileImage)
         {
+
+            var categoriaLista = db.Categorias.ToList();
+
+            ViewBag.Categoria = new SelectList(categoriaLista, "ID", "TipoCategoria");
+
             if (fileImage != null)
             {
 
@@ -71,7 +142,7 @@ namespace ControlePatrimonio.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Produtoes.Add(produto);
+                db.Produtos.Add(produto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -79,14 +150,20 @@ namespace ControlePatrimonio.Controllers
             return View(produto);
         }
 
+
         // GET: Produto/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            var categoriaLista = db.Categorias.ToList();
+
+            ViewBag.Categoria = new SelectList(categoriaLista, "ID", "TipoCategoria");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
+            Produto produto = db.Produtos.Find(id);
 
             ViewBag.Image = produto.URLFoto;
 
@@ -105,6 +182,11 @@ namespace ControlePatrimonio.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Produto produto, HttpPostedFileBase fileImage)
         {
+            var categoriaLista = db.Categorias.ToList();
+
+            ViewBag.Categoria = new SelectList(categoriaLista, "ID", "TipoCategoria");
+
+
             if (ModelState.IsValid)
             {
                 if (fileImage != null)
@@ -135,9 +217,16 @@ namespace ControlePatrimonio.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
+            Produto produto = db.Produtos.Find(id);
 
             ViewBag.Image = produto.URLFoto;
+
+            var categoria = db.Categorias.Find(produto.CategoriaID);
+
+            produto.Categoria = new Categoria();
+
+            produto.Categoria.TipoCategoria = categoria.TipoCategoria;
+
 
             if (produto == null)
             {
@@ -148,13 +237,28 @@ namespace ControlePatrimonio.Controllers
 
         // POST: Produto/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produto produto = db.Produtoes.Find(id);
-            db.Produtoes.Remove(produto);
+            Produto produto = db.Produtos.Find(id);
+
+            var patrimonioLista = db.Patrimonios.ToList();
+
+            var produtoPatrimonio = patrimonioLista.Where(x => x.ProdutoId == id).LastOrDefault();
+
+            if (produtoPatrimonio != null)
+            {
+                //throw new ApplicationException("Não é possivel excluir, existe um patrimonio cadastrado com este produto.");
+
+                var result = new { Success = "False", Message = "Não é possivel excluir, existe um patrimonio cadastrado com este produto." };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
+            db.Produtos.Remove(produto);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            var resultSucesso = new { Success = "true", Message = "Produto Excluido com sucesso!" };
+            return Json(resultSucesso, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

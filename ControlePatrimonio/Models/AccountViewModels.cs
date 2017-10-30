@@ -72,9 +72,8 @@ namespace ControlePatrimonio.Models
         [Display(Name = "Region")]
         public string Region { get; set; }
 
-        [Required]
         [Display(Name = "FilialId")]
-        public int FilialId { get; set; }
+        public int? FilialId { get; set; }
 
         [Required]
         [EmailAddress]

@@ -21,7 +21,7 @@ namespace ControlePatrimonio.Models
 
         public string UsuarioPerfil { get; set; }
 
-        public int FilialId { get; set; }
+        public int? FilialId { get; set; }
 
     }
 
@@ -43,8 +43,12 @@ namespace ControlePatrimonio.Models
 
         public System.Data.Entity.DbSet<ControlePatrimonio.Models.Fornecedor> Fornecedors { get; set; }
 
-        public System.Data.Entity.DbSet<ControlePatrimonio.Models.Produto> Produtoes { get; set; }
+        public System.Data.Entity.DbSet<ControlePatrimonio.Models.Categoria> Categorias { get; set; }
+
+        public System.Data.Entity.DbSet<ControlePatrimonio.Models.Produto> Produtos { get; set; }
 
         public System.Data.Entity.DbSet<ControlePatrimonio.Models.Patrimonio> Patrimonios { get; set; }
+
+        
     }
 }

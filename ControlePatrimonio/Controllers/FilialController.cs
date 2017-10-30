@@ -51,7 +51,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EmpresaId,NomeFilial,Cidade,Estado,Telefone")] Filial filial)
+        public ActionResult Create(Filial filial)
         {
             if (ModelState.IsValid)
             {
@@ -92,10 +92,14 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EmpresaId,NomeFilial,Cidade,Estado,Telefone")] Filial filial)
+        public ActionResult Edit(Filial filial)
         {
             if (ModelState.IsValid)
             {
+                var empresa = db.Empresas.Find(filial.EmpresaId);
+
+                filial.EmpresaNome = empresa.Nome;
+
                 db.Entry(filial).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -120,13 +124,29 @@ namespace ControlePatrimonio.Controllers
 
         // POST: Filial/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Filial filial = db.Filials.Find(id);
+
+            var patrimonio = db.Patrimonios.ToList();
+
+            var patrimonioFilial = patrimonio.Where(x => x.FilialId == id).SingleOrDefault();
+
+            if (patrimonioFilial != null)
+            {
+                //throw new ApplicationException("Não é possivel excluir, existe patrimonios cadastrados para esta filial");
+
+                var result = new { Success = "False", Message = "Não é possivel excluir, existe patrimonios cadastrados para esta filial" };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
             db.Filials.Remove(filial);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            var resultSucesso = new { Success = "true", Message = "Filial excluida com sucesso!" };
+            return Json(resultSucesso, JsonRequestBehavior.AllowGet);
+
         }
 
         protected override void Dispose(bool disposing)

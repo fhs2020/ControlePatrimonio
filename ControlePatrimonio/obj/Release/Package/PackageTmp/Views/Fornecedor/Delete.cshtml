@@ -4,6 +4,8 @@
     ViewBag.Title = "Delete";
 }
 
+@Html.HiddenFor(model => model.Id)
+
 <h2>Excluir</h2>
 
 <h3>Certeza que deseja excluir este fornecedor?</h3>
@@ -27,13 +29,7 @@
             @Html.DisplayFor(model => model.Telefone)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Observacao)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Observacao)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Endereco)
@@ -74,14 +70,60 @@
             @Html.DisplayFor(model => model.Pais)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Excluir" class="btn btn-danger btn-default" /> |
+            <input id="Excluir" type="button" value="Excluir" class="btn btn-danger btn-danger" /> |
             @Html.ActionLink("Voltar para lista de fornecedores", "Index")
         </div>
     }
 </div>
+
+
+
+
+@section Scripts {
+
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#Excluir").on("click", function () {
+
+                var IdEmpresa = $('#Id').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Fornecedor/Delete",
+                    cache: false,
+                    data: { Id: IdEmpresa }
+                }).done(function (data) {
+                    if (data.success == true) {
+                        if (data.success) {
+                            loadURL("/Fornecedor/index/");
+                            alert("Empresa excluida com sucesso!");
+                        }
+                    } else {
+                        window.location.href = '@Url.Action("Index", "Fornecedor")';
+                        alert(data.Message);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+}

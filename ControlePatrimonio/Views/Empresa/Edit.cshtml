@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -70,16 +70,54 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista de empresas", "Index")
 </div>
 
 @section Scripts {
+
+<script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+        $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+        $("#CEP").inputmask("mask", { "mask": "99999-999" });
+        //$("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
+        //$("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
+        //$("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
+        //$("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+    });
+
+         //$("#Nome").keypress(function (event) {
+         //    var inputValue = event.charCode;
+         //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+         //        event.preventDefault();
+         //    }
+         //});
+
+         //$("#Cidade").keypress(function (event) {
+         //    var inputValue = event.charCode;
+         //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+         //        event.preventDefault();
+         //    }
+         //});
+
+         //$("#UF").keypress(function (event) {
+         //    var inputValue = event.charCode;
+         //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+         //        event.preventDefault();
+         //    }
+         //});
+
+ </script>
+
 }

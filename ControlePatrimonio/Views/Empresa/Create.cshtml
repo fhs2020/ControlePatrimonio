@@ -6,11 +6,10 @@
 
 <h2>Cadastro</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Empresa</h4>
         <hr />
@@ -18,15 +17,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
                 @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -38,14 +36,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Endereco, "Endereço",  htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Endereco, "Endereço", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2", @type = "text" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
             </div>
@@ -74,9 +72,57 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista de empresas", "Index")
 </div>
 
+
 @section Scripts {
+
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#CEP").inputmask("mask", { "mask": "99999-999" });
+            //$("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
+            //$("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
+            //$("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+        });
+
+        //$("#Nome").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
+
+        $("#Cidade").keypress(function (evt) {
+
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+
+            if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                event.preventDefault();
+            }
+
+        });
+
+        $("#UF").keypress(function (evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+
+            if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                event.preventDefault();
+            }
+        });
+
+    </script>
+
+
 }
