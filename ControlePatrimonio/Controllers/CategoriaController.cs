@@ -50,6 +50,8 @@ namespace ControlePatrimonio.Controllers
         {
             if (ModelState.IsValid)
             {
+                categoria.TipoCategoria.ToUpper();
+
                 db.Categorias.Add(categoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +84,8 @@ namespace ControlePatrimonio.Controllers
         {
             if (ModelState.IsValid)
             {
+                categoria.TipoCategoria.ToUpper();
+
                 db.Entry(categoria).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,13 +110,30 @@ namespace ControlePatrimonio.Controllers
 
         // POST: Categoria/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Categoria categoria = db.Categorias.Find(id);
+
+            var produtos = db.Produtos.ToList();
+
+            var produtoPatrimonio = produtos.Where(x => x.CategoriaID == id).LastOrDefault();
+
+            if (produtoPatrimonio != null)
+            {
+                //throw new ApplicationException("Não é possivel excluir, existe um patrimonio cadastrado com este produto.");
+
+                var result = new { Success = "False", Message = "Não é possivel excluir, existe um produto cadastrado com esta categoria." };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
+
+
             db.Categorias.Remove(categoria);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+            var resultSucesso = new { Success = "true", Message = "Produto Excluido com sucesso!" };
+            return Json(resultSucesso, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

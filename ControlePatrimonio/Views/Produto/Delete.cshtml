@@ -16,17 +16,21 @@
     <hr />
     <dl class="dl-horizontal">
 
-        <dd>
-            Categoria
-        </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Categoria.TipoCategoria)
+            Categoria
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NomeProduto)
+            @Model.Categoria.TipoCategoria.ToUpper()
         </dd>
+
+        <dt>
+            Produto
+        </dt>
+        <dd>
+            @Model.NomeProduto.ToUpper()
+        </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Marca)

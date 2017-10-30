@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @type = "text", @style= "text-transform:uppercase" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,7 +86,7 @@
         $(document).ready(function () {
 
             $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
-            $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#CNPJ").inputmask("mask", { "mask": "99.999.999/9999-99" }, { reverse: true });
             $("#CEP").inputmask("mask", { "mask": "99999-999" });
             //$("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
             //$("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });

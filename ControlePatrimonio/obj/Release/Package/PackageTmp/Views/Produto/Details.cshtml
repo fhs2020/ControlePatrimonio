@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Categoria.TipoCategoria)
+            @Model.Categoria.TipoCategoria.ToUpper()
         </dd>
 
 
@@ -34,7 +34,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NomeProduto)
+            @Model.NomeProduto.ToUpper()
         </dd>
 
         <dt>

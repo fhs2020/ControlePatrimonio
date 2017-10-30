@@ -58,11 +58,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Categoria.TipoCategoria)
+            @item.Categoria.TipoCategoria.ToUpper()
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.NomeProduto)
+            @item.NomeProduto.ToUpper()
         </td>
 
         <td>

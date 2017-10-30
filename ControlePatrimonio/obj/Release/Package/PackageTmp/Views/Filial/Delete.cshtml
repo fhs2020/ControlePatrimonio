@@ -17,16 +17,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmpresaNome)
+            @Model.EmpresaNome.ToUpper()
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EmpresaId)
+            Filial
             @Html.HiddenFor(model => model.EmpresaId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NomeFilial)
+            @Model.NomeFilial.ToUpper()
         </dd>
 
         <dt>

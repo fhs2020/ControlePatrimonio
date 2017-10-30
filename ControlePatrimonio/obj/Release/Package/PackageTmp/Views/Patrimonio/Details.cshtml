@@ -23,7 +23,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmpresaNome)
+            @Model.EmpresaNome.ToUpper()
         </dd>
 
         <dt>
@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FilialNome)
+            @Model.FilialNome.ToUpper()
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FornecedorNome)
+            @Model.FornecedorNome.ToUpper()
         </dd>
 
         <dt>
@@ -47,7 +47,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProdutoNome)
+            @if (Model.ProdutoNome != null)
+            {
+                @Model.ProdutoNome.ToUpper()
+            }
+            else
+            {
+                @Model.ProdutoNome
+            }
+
         </dd>
 
         @*<dt>

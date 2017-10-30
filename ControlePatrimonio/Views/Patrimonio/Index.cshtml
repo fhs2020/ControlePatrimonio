@@ -49,13 +49,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EmpresaNome)
+            @item.EmpresaNome.ToUpper()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FilialNome)
+            @item.FilialNome.ToUpper()
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.ProdutoNome)
+            @if (item.ProdutoNome != null)
+            {
+                @item.ProdutoNome.ToUpper()
+            }
+            else
+            {
+                @item.ProdutoNome
+            }
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumeroSerie)

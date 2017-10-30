@@ -32,11 +32,29 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EmpresaNome)
+            @if (item.EmpresaNome != null)
+            {
+                @item.EmpresaNome.ToUpper()
+            }
+            else
+            {
+                @item.EmpresaNome
+            }
+
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.NomeFilial)
+            @if (item.NomeFilial != null)
+            {
+                @item.NomeFilial.ToUpper()
+            }
+            else
+            {
+                @item.NomeFilial
+            }
+
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Cidade)
         </td>

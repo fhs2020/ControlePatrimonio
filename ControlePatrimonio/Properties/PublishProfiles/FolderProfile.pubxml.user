@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:46</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.dll">
-      <publishTime>10/30/2017 13:21:47</publishTime>
+      <publishTime>10/30/2017 16:50:43</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.pdb">
-      <publishTime>10/30/2017 13:21:47</publishTime>
+      <publishTime>10/30/2017 16:50:43</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -319,7 +319,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2017 10:20:35</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/16/2017 17:32:36</publishTime>
+      <publishTime>10/30/2017 15:18:09</publishTime>
     </File>
     <File Include="Content/smog-3.jpg">
       <publishTime>10/18/2017 10:20:35</publishTime>
@@ -751,61 +751,61 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2017 09:29:07</publishTime>
     </File>
     <File Include="Views/Categoria/Delete.cshtml">
-      <publishTime>10/30/2017 09:30:26</publishTime>
+      <publishTime>10/30/2017 15:52:02</publishTime>
     </File>
     <File Include="Views/Categoria/Details.cshtml">
-      <publishTime>10/30/2017 09:31:21</publishTime>
+      <publishTime>10/30/2017 15:51:11</publishTime>
     </File>
     <File Include="Views/Categoria/Edit.cshtml">
       <publishTime>10/30/2017 09:32:02</publishTime>
     </File>
     <File Include="Views/Categoria/Index.cshtml">
-      <publishTime>10/30/2017 09:33:46</publishTime>
+      <publishTime>10/30/2017 15:50:51</publishTime>
     </File>
     <File Include="Views/Empresa/Create.cshtml">
-      <publishTime>10/30/2017 13:20:54</publishTime>
+      <publishTime>10/30/2017 16:07:16</publishTime>
     </File>
     <File Include="Views/Empresa/Delete.cshtml">
-      <publishTime>10/27/2017 12:58:22</publishTime>
+      <publishTime>10/30/2017 15:49:42</publishTime>
     </File>
     <File Include="Views/Empresa/Details.cshtml">
-      <publishTime>10/26/2017 16:43:07</publishTime>
+      <publishTime>10/30/2017 15:49:22</publishTime>
     </File>
     <File Include="Views/Empresa/Edit.cshtml">
       <publishTime>10/27/2017 10:39:00</publishTime>
     </File>
     <File Include="Views/Empresa/Index.cshtml">
-      <publishTime>10/26/2017 16:43:28</publishTime>
+      <publishTime>10/30/2017 15:34:12</publishTime>
     </File>
     <File Include="Views/Filial/Create.cshtml">
       <publishTime>10/30/2017 13:20:33</publishTime>
     </File>
     <File Include="Views/Filial/Delete.cshtml">
-      <publishTime>10/27/2017 10:55:25</publishTime>
+      <publishTime>10/30/2017 15:48:26</publishTime>
     </File>
     <File Include="Views/Filial/Details.cshtml">
-      <publishTime>10/25/2017 08:20:00</publishTime>
+      <publishTime>10/30/2017 15:46:17</publishTime>
     </File>
     <File Include="Views/Filial/Edit.cshtml">
       <publishTime>10/30/2017 13:20:19</publishTime>
     </File>
     <File Include="Views/Filial/Index.cshtml">
-      <publishTime>10/17/2017 10:09:48</publishTime>
+      <publishTime>10/30/2017 16:27:01</publishTime>
     </File>
     <File Include="Views/Fornecedor/Create.cshtml">
       <publishTime>10/30/2017 13:19:13</publishTime>
     </File>
     <File Include="Views/Fornecedor/Delete.cshtml">
-      <publishTime>10/27/2017 10:55:06</publishTime>
+      <publishTime>10/30/2017 15:44:59</publishTime>
     </File>
     <File Include="Views/Fornecedor/Details.cshtml">
-      <publishTime>10/25/2017 08:25:01</publishTime>
+      <publishTime>10/30/2017 15:44:38</publishTime>
     </File>
     <File Include="Views/Fornecedor/Edit.cshtml">
       <publishTime>10/30/2017 13:20:05</publishTime>
     </File>
     <File Include="Views/Fornecedor/Index.cshtml">
-      <publishTime>10/19/2017 15:21:30</publishTime>
+      <publishTime>10/30/2017 15:44:19</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>10/17/2017 17:42:06</publishTime>
@@ -838,31 +838,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2017 11:53:51</publishTime>
     </File>
     <File Include="Views/Patrimonio/Delete.cshtml">
-      <publishTime>10/26/2017 16:40:29</publishTime>
+      <publishTime>10/30/2017 15:58:05</publishTime>
     </File>
     <File Include="Views/Patrimonio/Details.cshtml">
-      <publishTime>10/26/2017 16:47:19</publishTime>
+      <publishTime>10/30/2017 15:56:55</publishTime>
     </File>
     <File Include="Views/Patrimonio/Edit.cshtml">
       <publishTime>10/26/2017 16:40:54</publishTime>
     </File>
     <File Include="Views/Patrimonio/Index.cshtml">
-      <publishTime>10/27/2017 14:27:55</publishTime>
+      <publishTime>10/30/2017 15:57:09</publishTime>
     </File>
     <File Include="Views/Produto/Create.cshtml">
       <publishTime>10/30/2017 10:06:56</publishTime>
     </File>
     <File Include="Views/Produto/Delete.cshtml">
-      <publishTime>10/30/2017 10:34:53</publishTime>
+      <publishTime>10/30/2017 15:40:23</publishTime>
     </File>
     <File Include="Views/Produto/Details.cshtml">
-      <publishTime>10/30/2017 10:29:20</publishTime>
+      <publishTime>10/30/2017 15:36:53</publishTime>
     </File>
     <File Include="Views/Produto/Edit.cshtml">
       <publishTime>10/30/2017 10:15:53</publishTime>
     </File>
     <File Include="Views/Produto/Index.cshtml">
-      <publishTime>10/30/2017 10:35:49</publishTime>
+      <publishTime>10/30/2017 15:35:28</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/16/2017 17:32:43</publishTime>
@@ -871,7 +871,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/30/2017 09:27:31</publishTime>
+      <publishTime>10/30/2017 15:19:07</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/18/2017 10:33:36</publishTime>

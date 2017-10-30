@@ -47,10 +47,23 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Create(Empresa empresa)
         {
             if (ModelState.IsValid)
             {
+                var empresaNome = empresa.Nome.ToUpper();
+
+                empresa.Nome = null;
+
+                empresa.Nome = empresaNome;
+
+                var telefone = empresa.Telefone.Replace("_", "");
+
+                empresa.Telefone = null;
+
+                empresa.Telefone = telefone;
+
                 db.Empresas.Add(empresa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,10 +92,23 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Edit(Empresa empresa)
         {
             if (ModelState.IsValid)
             {
+                var empresaNome = empresa.Nome.ToUpper();
+
+                empresa.Nome = null;
+
+                empresa.Nome = empresaNome;
+
+                var telefone = empresa.Telefone.Replace("_", "");
+
+                empresa.Telefone = null;
+
+                empresa.Telefone = telefone;
+
                 db.Entry(empresa).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

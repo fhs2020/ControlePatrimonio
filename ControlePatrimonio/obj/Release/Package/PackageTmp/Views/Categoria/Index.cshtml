@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoCategoria)
+            @item.TipoCategoria.ToUpper()
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |

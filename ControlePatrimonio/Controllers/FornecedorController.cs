@@ -47,10 +47,17 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Create(Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
+                var telefone = fornecedor.Telefone.Replace("_", "");
+
+                fornecedor.Telefone = null;
+
+                fornecedor.Telefone = telefone;
+
                 db.Fornecedors.Add(fornecedor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,10 +86,17 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Edit(Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
+                var telefone = fornecedor.Telefone.Replace("_", "");
+
+                fornecedor.Telefone = null;
+
+                fornecedor.Telefone = telefone;
+
                 db.Entry(fornecedor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

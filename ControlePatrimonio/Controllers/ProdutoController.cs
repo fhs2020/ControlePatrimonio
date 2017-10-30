@@ -120,6 +120,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Create(Produto produto, HttpPostedFileBase fileImage)
         {
 
@@ -180,6 +181,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Edit(Produto produto, HttpPostedFileBase fileImage)
         {
             var categoriaLista = db.Categorias.ToList();

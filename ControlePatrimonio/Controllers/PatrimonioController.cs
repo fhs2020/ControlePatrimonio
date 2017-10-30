@@ -149,11 +149,13 @@ namespace ControlePatrimonio.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Create(Patrimonio patrimonio, HttpPostedFileBase fileImage)
         {
             var usuarioId = User.Identity.GetUserId();
             var usuarioLogado = db.Users.Find(usuarioId);
-
+            
             var listaPatrimonio = db.Patrimonios.ToList();
 
             if (ModelState.IsValid)
@@ -209,7 +211,7 @@ namespace ControlePatrimonio.Controllers
                     if (patrimonio.ProdutoId != 0)
                     {
                         var produto = db.Produtos.Find(patrimonio.ProdutoId);
-                        patrimonio.ProdutoNome = produto.Modelo;
+                        patrimonio.ProdutoNome = produto.NomeProduto;
                     }
                     else
                     {
@@ -328,6 +330,7 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Edit(Patrimonio patrimonio, HttpPostedFileBase fileImage)
         {
             try

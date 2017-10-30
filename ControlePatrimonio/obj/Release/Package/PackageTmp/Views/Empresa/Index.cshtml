@@ -23,7 +23,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nome)
+           @item.Nome.ToString().ToUpper()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Telefone)
@@ -37,3 +37,4 @@
 }
 
 </table>
+ 

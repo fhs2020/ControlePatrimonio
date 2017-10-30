@@ -51,13 +51,23 @@ namespace ControlePatrimonio.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Create(Filial filial)
         {
             if (ModelState.IsValid)
             {
                 var empresa = db.Empresas.Find(filial.EmpresaId);
 
-                filial.EmpresaNome = empresa.Nome;
+                filial.EmpresaNome = null;
+
+                filial.EmpresaNome = empresa.Nome.ToUpper();
+
+                var telefone = filial.Telefone.Replace("_", "");
+
+                filial.Telefone = null;
+
+                filial.Telefone = telefone;
+
 
                 db.Filials.Add(filial);
                 db.SaveChanges();
@@ -88,17 +98,23 @@ namespace ControlePatrimonio.Controllers
         }
 
         // POST: Filial/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventDuplicateRequest]
         public ActionResult Edit(Filial filial)
         {
             if (ModelState.IsValid)
             {
                 var empresa = db.Empresas.Find(filial.EmpresaId);
 
-                filial.EmpresaNome = empresa.Nome;
+                filial.EmpresaNome = empresa.Nome.ToUpper();
+
+                var telefone = filial.Telefone.Replace("_", "");
+
+                filial.Telefone = null;
+
+                filial.Telefone = telefone;
+
 
                 db.Entry(filial).State = EntityState.Modified;
                 db.SaveChanges();
