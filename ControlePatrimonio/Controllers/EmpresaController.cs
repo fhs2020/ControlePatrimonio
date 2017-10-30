@@ -139,7 +139,7 @@ namespace ControlePatrimonio.Controllers
 
             var filial = db.Filials.ToList();
 
-            var empresaFilial = filial.Where(x => x.EmpresaId == id).SingleOrDefault();
+            var empresaFilial = filial.Where(x => x.EmpresaId == id).LastOrDefault();
 
             if (empresaFilial != null)
             {

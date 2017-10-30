@@ -50,7 +50,11 @@ namespace ControlePatrimonio.Controllers
         {
             if (ModelState.IsValid)
             {
-                categoria.TipoCategoria.ToUpper();
+                var categoriaNome = categoria.TipoCategoria;
+
+                categoria.TipoCategoria = null;
+
+                categoria.TipoCategoria = categoriaNome.ToUpper();
 
                 db.Categorias.Add(categoria);
                 db.SaveChanges();
@@ -84,7 +88,11 @@ namespace ControlePatrimonio.Controllers
         {
             if (ModelState.IsValid)
             {
-                categoria.TipoCategoria.ToUpper();
+                var categoriaNome = categoria.TipoCategoria;
+
+                categoria.TipoCategoria = null;
+
+                categoria.TipoCategoria = categoriaNome.ToUpper();
 
                 db.Entry(categoria).State = EntityState.Modified;
                 db.SaveChanges();
