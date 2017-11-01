@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -119,6 +119,9 @@
             if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
                 event.preventDefault();
             }
+
+            var text = $('#Cidade').val();
+            $(this).val(text.toUpperCase());
         });
 
         $("#UF").keypress(function (evt) {
@@ -130,6 +133,9 @@
             if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
                 event.preventDefault();
             }
+
+            var text = $('#UF').val();
+            $(this).val(text.toUpperCase());
         });
 
         $("#Pais").keypress(function (evt) {
@@ -140,7 +146,16 @@
             if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
                 event.preventDefault();
             }
+
+            var text = $('#Pais').val();
+            $(this).val(text.toUpperCase());
         });
+
+        $('#Nome').keyup(function () {
+            var text = $('#Nome').val();
+            $(this).val(text.toUpperCase());
+        });
+
 
     </script>
 }

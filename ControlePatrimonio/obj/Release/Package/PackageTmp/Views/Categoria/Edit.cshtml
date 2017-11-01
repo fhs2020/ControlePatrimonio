@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Categoria</h4>
         <hr />
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TipoCategoria, "Tipo Categoria", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TipoCategoria, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TipoCategoria, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.TipoCategoria, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -39,4 +39,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $('#TipoCategoria').keyup(function () {
+            var text = $('#TipoCategoria').val();
+            $(this).val(text.toUpperCase());
+        });
+
+    </script>
 }

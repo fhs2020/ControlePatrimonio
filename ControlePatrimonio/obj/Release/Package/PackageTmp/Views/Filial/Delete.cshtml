@@ -17,7 +17,15 @@
         </dt>
 
         <dd>
-            @Model.EmpresaNome.ToUpper()
+            @if (Model.EmpresaNome != null)
+            {
+                @Model.EmpresaNome.ToUpper()
+            }
+            else
+            {
+                @Model.EmpresaNome
+            }
+
         </dd>
 
         <dt>

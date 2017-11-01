@@ -146,7 +146,7 @@ namespace ControlePatrimonio.Controllers
 
             var patrimonio = db.Patrimonios.ToList();
 
-            var patrimonioFilial = patrimonio.Where(x => x.FilialId == id).SingleOrDefault();
+            var patrimonioFilial = patrimonio.Where(x => x.FilialId == id).LastOrDefault();
 
             if (patrimonioFilial != null)
             {

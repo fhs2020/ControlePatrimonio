@@ -7,10 +7,10 @@
 <h2>Nova Filial</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
 
         <hr />
@@ -18,21 +18,23 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EmpresaId, "Escolha Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-              @Html.DropDownListFor(model => model.EmpresaId, (SelectList)ViewBag.Empresa, "Selecione empresa", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.EmpresaId, (SelectList)ViewBag.Empresa, "Selecione empresa", new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.EmpresaId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NomeFilial, "Nome da nova filial", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NomeFilial, "Nome da filial", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NomeFilial, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NomeFilial, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.NomeFilial, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -97,34 +99,48 @@
             $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
         });
 
-            //$("#NomeFilial").keypress(function (event) {
-            //    var inputValue = event.charCode;
-            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-            //        event.preventDefault();
-            //    }
-            //});
+        //$("#NomeFilial").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
-            $("#Cidade").keypress(function (evt) {
-                evt = (evt) ? evt : event;
-                var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
-                    ((evt.which) ? evt.which : 0));
+        $("#Cidade").keypress(function (evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
 
-                if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
-                    event.preventDefault();
-                }
-            });
+            if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                event.preventDefault();
+            }
 
-            $("#Estado").keypress(function (evt) {
-                evt = (evt) ? evt : event;
-                var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
-                    ((evt.which) ? evt.which : 0));
+            var text = $('#Cidade').val();
+            $(this).val(text.toUpperCase());
 
-                if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
-                    event.preventDefault();
-                }
-            });
+        });
 
-</script>
+        $("#Estado").keypress(function (evt) {
+            evt = (evt) ? evt : event;
+            var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+                ((evt.which) ? evt.which : 0));
+
+            if (charCode > 33 && (charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                event.preventDefault();
+            }
+
+            var text = $('#Estado').val();
+            $(this).val(text.toUpperCase());
+        });
+
+        $('#NomeFilial').keyup(function () {
+            var text = $('#NomeFilial').val();
+            $(this).val(text.toUpperCase());
+        });
+ 
+ 
+
+    </script>
 
 
 }

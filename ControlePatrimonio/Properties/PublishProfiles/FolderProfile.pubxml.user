@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:46</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.dll">
-      <publishTime>10/30/2017 16:50:43</publishTime>
+      <publishTime>11/01/2017 16:28:32</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.pdb">
-      <publishTime>10/30/2017 16:50:43</publishTime>
+      <publishTime>11/01/2017 16:28:32</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -118,148 +118,148 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:02:28</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.Process.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Claims.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Thread.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
       <publishTime>11/05/2016 04:55:30</publishTime>
@@ -319,7 +319,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2017 10:20:35</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/30/2017 15:18:09</publishTime>
+      <publishTime>10/30/2017 17:15:07</publishTime>
     </File>
     <File Include="Content/smog-3.jpg">
       <publishTime>10/18/2017 10:20:35</publishTime>
@@ -475,7 +475,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:36</publishTime>
     </File>
     <File Include="Images/computador.jpg">
-      <publishTime>10/30/2017 13:09:41</publishTime>
+      <publishTime>10/30/2017 18:14:34</publishTime>
     </File>
     <File Include="Images/medidor de gas 22.jpg">
       <publishTime>10/26/2017 08:24:57</publishTime>
@@ -748,7 +748,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Categoria/Create.cshtml">
-      <publishTime>10/30/2017 09:29:07</publishTime>
+      <publishTime>11/01/2017 12:52:40</publishTime>
     </File>
     <File Include="Views/Categoria/Delete.cshtml">
       <publishTime>10/30/2017 15:52:02</publishTime>
@@ -757,43 +757,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2017 15:51:11</publishTime>
     </File>
     <File Include="Views/Categoria/Edit.cshtml">
-      <publishTime>10/30/2017 09:32:02</publishTime>
+      <publishTime>11/01/2017 12:52:54</publishTime>
     </File>
     <File Include="Views/Categoria/Index.cshtml">
       <publishTime>10/30/2017 15:50:51</publishTime>
     </File>
     <File Include="Views/Empresa/Create.cshtml">
-      <publishTime>10/30/2017 16:07:16</publishTime>
+      <publishTime>11/01/2017 13:08:58</publishTime>
     </File>
     <File Include="Views/Empresa/Delete.cshtml">
-      <publishTime>10/30/2017 15:49:42</publishTime>
+      <publishTime>10/30/2017 17:12:13</publishTime>
     </File>
     <File Include="Views/Empresa/Details.cshtml">
       <publishTime>10/30/2017 15:49:22</publishTime>
     </File>
     <File Include="Views/Empresa/Edit.cshtml">
-      <publishTime>10/27/2017 10:39:00</publishTime>
+      <publishTime>11/01/2017 13:18:09</publishTime>
     </File>
     <File Include="Views/Empresa/Index.cshtml">
       <publishTime>10/30/2017 15:34:12</publishTime>
     </File>
     <File Include="Views/Filial/Create.cshtml">
-      <publishTime>10/30/2017 13:20:33</publishTime>
+      <publishTime>11/01/2017 13:07:27</publishTime>
     </File>
     <File Include="Views/Filial/Delete.cshtml">
-      <publishTime>10/30/2017 15:48:26</publishTime>
+      <publishTime>10/30/2017 17:20:16</publishTime>
     </File>
     <File Include="Views/Filial/Details.cshtml">
       <publishTime>10/30/2017 15:46:17</publishTime>
     </File>
     <File Include="Views/Filial/Edit.cshtml">
-      <publishTime>10/30/2017 13:20:19</publishTime>
+      <publishTime>11/01/2017 13:08:03</publishTime>
     </File>
     <File Include="Views/Filial/Index.cshtml">
       <publishTime>10/30/2017 16:27:01</publishTime>
     </File>
     <File Include="Views/Fornecedor/Create.cshtml">
-      <publishTime>10/30/2017 13:19:13</publishTime>
+      <publishTime>11/01/2017 13:11:33</publishTime>
     </File>
     <File Include="Views/Fornecedor/Delete.cshtml">
       <publishTime>10/30/2017 15:44:59</publishTime>
@@ -802,7 +802,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/30/2017 15:44:38</publishTime>
     </File>
     <File Include="Views/Fornecedor/Edit.cshtml">
-      <publishTime>10/30/2017 13:20:05</publishTime>
+      <publishTime>11/01/2017 13:12:30</publishTime>
     </File>
     <File Include="Views/Fornecedor/Index.cshtml">
       <publishTime>10/30/2017 15:44:19</publishTime>
@@ -835,31 +835,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Patrimonio/Create.cshtml">
-      <publishTime>10/30/2017 11:53:51</publishTime>
+      <publishTime>11/01/2017 15:13:20</publishTime>
     </File>
     <File Include="Views/Patrimonio/Delete.cshtml">
-      <publishTime>10/30/2017 15:58:05</publishTime>
+      <publishTime>11/01/2017 11:32:41</publishTime>
     </File>
     <File Include="Views/Patrimonio/Details.cshtml">
-      <publishTime>10/30/2017 15:56:55</publishTime>
+      <publishTime>11/01/2017 11:31:08</publishTime>
     </File>
     <File Include="Views/Patrimonio/Edit.cshtml">
-      <publishTime>10/26/2017 16:40:54</publishTime>
+      <publishTime>11/01/2017 11:56:02</publishTime>
     </File>
     <File Include="Views/Patrimonio/Index.cshtml">
-      <publishTime>10/30/2017 15:57:09</publishTime>
+      <publishTime>11/01/2017 09:08:53</publishTime>
     </File>
     <File Include="Views/Produto/Create.cshtml">
-      <publishTime>10/30/2017 10:06:56</publishTime>
+      <publishTime>11/01/2017 16:15:30</publishTime>
     </File>
     <File Include="Views/Produto/Delete.cshtml">
-      <publishTime>10/30/2017 15:40:23</publishTime>
+      <publishTime>10/30/2017 17:17:15</publishTime>
     </File>
     <File Include="Views/Produto/Details.cshtml">
       <publishTime>10/30/2017 15:36:53</publishTime>
     </File>
     <File Include="Views/Produto/Edit.cshtml">
-      <publishTime>10/30/2017 10:15:53</publishTime>
+      <publishTime>11/01/2017 13:00:49</publishTime>
     </File>
     <File Include="Views/Produto/Index.cshtml">
       <publishTime>10/30/2017 15:35:28</publishTime>
@@ -871,10 +871,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/30/2017 15:19:07</publishTime>
+      <publishTime>10/30/2017 17:13:08</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>10/18/2017 10:33:36</publishTime>
+      <publishTime>11/01/2017 16:51:15</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/16/2017 17:32:36</publishTime>

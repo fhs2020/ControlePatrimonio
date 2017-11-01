@@ -52,6 +52,13 @@ namespace ControlePatrimonio.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                var fornecedorNome = fornecedor.Nome.ToUpper();
+
+                fornecedor.Nome = null;
+
+                fornecedor.Nome = fornecedorNome;
+
                 var telefone = fornecedor.Telefone.Replace("_", "");
 
                 fornecedor.Telefone = null;
@@ -92,6 +99,13 @@ namespace ControlePatrimonio.Controllers
             if (ModelState.IsValid)
             {
                 var telefone = fornecedor.Telefone.Replace("_", "");
+
+
+                var fornecedorNome = fornecedor.Nome.ToUpper();
+
+                fornecedor.Nome = null;
+
+                fornecedor.Nome = fornecedorNome;
 
                 fornecedor.Telefone = null;
 

@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Empresa</h4>
         <hr />
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,15 +28,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-2", required = "required" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -82,42 +83,57 @@
 
 @section Scripts {
 
-<script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
 
-<script type="text/javascript">
-    $(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-        $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
-        $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
-        $("#CEP").inputmask("mask", { "mask": "99999-999" });
-        //$("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
-        //$("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
-        //$("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
-        //$("#ip").inputmask("mask", { "mask": "999.999.999.999" });
-    });
+            $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#CEP").inputmask("mask", { "mask": "99999-999" });
+            //$("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
+            //$("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
+            //$("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
+            //$("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+        });
 
-         //$("#Nome").keypress(function (event) {
-         //    var inputValue = event.charCode;
-         //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-         //        event.preventDefault();
-         //    }
-         //});
+        //$("#Nome").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
-         //$("#Cidade").keypress(function (event) {
-         //    var inputValue = event.charCode;
-         //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-         //        event.preventDefault();
-         //    }
-         //});
+        //$("#Cidade").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
-         //$("#UF").keypress(function (event) {
-         //    var inputValue = event.charCode;
-         //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-         //        event.preventDefault();
-         //    }
-         //});
+        //$("#UF").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
- </script>
+        $('#Nome').keyup(function () {
+            var text = $('#Nome').val();
+            $(this).val(text.toUpperCase());
+        });
+
+        $('#Cidade').keyup(function () {
+            var text = $('#Cidade').val();
+            $(this).val(text.toUpperCase());
+        });
+
+        $('#UF').keyup(function () {
+            var text = $('#UF').val();
+            $(this).val(text.toUpperCase());
+        });
+
+    </script>
 
 }

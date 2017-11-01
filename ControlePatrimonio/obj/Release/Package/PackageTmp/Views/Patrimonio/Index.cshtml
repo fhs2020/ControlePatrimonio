@@ -52,7 +52,15 @@
             @item.EmpresaNome.ToUpper()
         </td>
         <td>
-            @item.FilialNome.ToUpper()
+            @if (item.FilialNome != null)
+            {
+                @item.FilialNome.ToUpper()
+            }
+            else
+            {
+                @item.FilialNome
+            }
+
         </td>
         
         <td>

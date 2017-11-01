@@ -32,8 +32,28 @@ namespace ControlePatrimonio.Controllers
 
                 var listaPatrimonio = db.Patrimonios.ToList();
 
-                var patrimoniosSearched = listaPatrimonio.Where(s => s.EmpresaNome.ToLower().Contains(search) || s.FilialNome.ToLower().Contains(search) ||
-                           s.ProdutoNome.ToLower().Contains(search) || s.NumeroSerie.ToLower().Contains(search) || s.NumeroPatrimonio.ToLower().Contains(search));
+                var patrimoniosSearched = listaPatrimonio.Where(s => s.EmpresaNome.ToLower().Contains(search) || 
+                           s.ProdutoNome.ToLower().Contains(search) || s.NumeroPatrimonio.ToLower().Contains(search)).ToList();
+
+                foreach(var item in listaPatrimonio)
+                {
+                    if (item.NumeroSerie != null)
+                    {
+                       if(string.Equals(item.NumeroSerie.ToLower(), search))
+                        {
+                            patrimoniosSearched.Add(item);
+                        }
+                    }
+
+                    if (item.FilialNome != null)
+                    {
+                        if (string.Equals(item.FilialNome.ToLower(), search))
+                        {
+                            patrimoniosSearched.Add(item);
+                        }
+                    }
+                }
+
 
                 if (patrimoniosSearched != null)
                 {
@@ -106,6 +126,8 @@ namespace ControlePatrimonio.Controllers
 
             ViewBag.Empresa = new SelectList(listaEmpresa, "id", "NomeEmpresa");
 
+            ViewBag.EmpresaLista = new SelectList(empresaLista, "Id", "Nome");
+
             var usuarioId = User.Identity.GetUserId();
 
             var usuarioLogado = db.Users.Find(usuarioId);
@@ -139,8 +161,11 @@ namespace ControlePatrimonio.Controllers
             // ViewBag.ProdutosLista = new SelectList(listaProduto, "id", "NomeProduto");
 
             var listaProducts = new List<Produto>();
+            var listaFilial = new List<Filial>();
 
             ViewBag.ProdutosLista = new SelectList(listaProducts, "id", "NomeProduto");
+
+            ViewBag.Filial = new SelectList(listaFilial, "Id", "NomeFilial");
 
             return View();
         }
@@ -164,24 +189,34 @@ namespace ControlePatrimonio.Controllers
                 {
                     foreach (var item in listaPatrimonio)
                     {
-                        if (item.NumeroSerie == patrimonio.NumeroSerie)
+                        if (patrimonio.NumeroSerie != null)
                         {
-                            throw new ApplicationException("Este número de serie já existe cadastrado com outro patrimonio");
+                            if (item.NumeroSerie == patrimonio.NumeroSerie)
+                            {
+                                throw new ApplicationException("Este número de serie já existe cadastrado com outro patrimonio");
 
+                            }
                         }
 
-                        if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
+                        if (patrimonio.NumeroPatrimonio != null)
                         {
-                            throw new ApplicationException("Este número de patrimonio já existe cadastrado com outro patrimonio");
+                            if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
+                            {
+                                throw new ApplicationException("Este número de patrimonio já existe cadastrado com outro patrimonio");
+                            }
                         }
+
+
                     }
 
 
                     patrimonio.UserId = usuarioId;
 
+                    patrimonio.DataCadastro = DateTime.Now;
+
                     if (fileImage != null)
                     {
-                        patrimonio.DataCadastro = DateTime.Now;
+                       
 
                         string path = System.IO.Path.Combine(Server.MapPath("~/Images"),
                                           Path.GetFileName(fileImage.FileName));
@@ -193,20 +228,23 @@ namespace ControlePatrimonio.Controllers
                         ViewBag.Message = "File uploaded successfully";
                     }
 
-
-                    if (patrimonio.FilialId != 0)
+                    if (patrimonio.EmpresaId != 0)
                     {
-                        var filial = db.Filials.Find(patrimonio.FilialId);
-                        patrimonio.FilialNome = filial.NomeFilial;
-
-                        var empresa = db.Empresas.Find(filial.EmpresaId);
-                        patrimonio.EmpresaNome = empresa.Nome;
-                        patrimonio.EmpresaId = empresa.Id;
+                        var empresaSelecionada = db.Empresas.Find(patrimonio.EmpresaId);
+                        patrimonio.EmpresaNome = empresaSelecionada.Nome;
                     }
                     else
                     {
-                        throw new ApplicationException("Selecione uma filial");
+                        throw new ApplicationException("Selecione uma empresa");
                     }
+
+
+                    if (patrimonio.FilialId != null && patrimonio.FilialId > 0)
+                    {
+                        var filial = db.Filials.Find(patrimonio.FilialId);
+                        patrimonio.FilialNome = filial.NomeFilial;
+                    }
+
 
                     if (patrimonio.ProdutoId != 0)
                     {
@@ -277,6 +315,41 @@ namespace ControlePatrimonio.Controllers
         }
 
 
+
+        //
+
+        [HttpPost]
+        public ActionResult GetFilialByEmpresaID(int? empresaId)
+        {
+            if (empresaId != null)
+            {
+                var empresa = db.Empresas.Find(empresaId);
+
+                List<Filial> objfilial = new List<Filial>();
+                objfilial = db.Filials.Where(m => m.EmpresaId == empresaId).ToList();
+
+                //SelectList produtoSelectList = new SelectList(objproduto, "id", "NomeProduto");
+
+                //var listaProdutosSelect = db.Produtos.Where(x => x.CategoriaID == categoriaId).ToList();
+
+                //var listaProduto = objfilial.AsEnumerable().Select(c => new
+                //{
+                //    Id = c.Id,
+                //    NomeProduto = string.Format("{0} - {1} - {2}", c.NomeProduto, c.Marca, c.Modelo)
+                //}).ToList();
+
+                var selectList = new SelectList(objfilial, "Id", "NomeFilial");
+
+                return Json(selectList);
+            }
+            else
+            {
+                return Json("");
+            }
+
+        }
+
+
         // GET: Patrimonio/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -288,18 +361,32 @@ namespace ControlePatrimonio.Controllers
 
             var empresaLista = db.Empresas.ToList();
 
-            var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
+            //var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
+            //{
+            //    Id = c.Id,
+            //    NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
+            //                                c.NomeFilial)
+            //}).ToList();
+
+            ViewBag.Empresa = new SelectList(empresaLista, "Id", "Nome");
+
+            var filialLista = new List<Filial>();
+
+            if (patrimonio.FilialNome != null && patrimonio.FilialId != null)
             {
-                Id = c.Id,
-                NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
-                                            c.NomeFilial)
-            }).ToList();
+                var filialAtual = db.Filials.Find(patrimonio.FilialId);
 
-            ViewBag.Empresa = new SelectList(listaEmpresa, "Id", "NomeEmpresa");
+                filialLista.Add(filialAtual);
 
-            var filialLista = db.Filials.ToList();
+                ViewBag.FilialLista = new SelectList(filialLista, "id", "NomeFilial", patrimonio.FilialNome);
+            }
+            else
+            {
+                var listaFilial = new List<Filial>();
 
-            ViewBag.FilialLista = new SelectList(filialLista, "id", "NomeFilial", patrimonio.FilialNome);
+                ViewBag.FilialLista = new SelectList(listaFilial, "Id", "NomeFilial");
+            }
+
 
             var fornecedoresLista = db.Fornecedors.ToList();
 
@@ -317,6 +404,14 @@ namespace ControlePatrimonio.Controllers
             ViewBag.ProdutosLista = new SelectList(listaProduto, "Id", "NomeProduto");
 
             //ViewBag.Image = patrimonio.URLImage;
+
+
+            var categoriaList = db.Categorias.ToList();
+        
+
+            ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
+
+      
 
             if (patrimonio == null)
             {
@@ -336,6 +431,11 @@ namespace ControlePatrimonio.Controllers
             try
             {
                 var listaPatrimonio = db.Patrimonios.ToList();
+
+
+                var categoriaList = db.Categorias.ToList();
+
+                ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
 
                 //foreach (var item in listaPatrimonio)
                 //{
@@ -364,10 +464,14 @@ namespace ControlePatrimonio.Controllers
                         ViewBag.Message = "File uploaded successfully";
                     }
 
-                    var filial = db.Filials.Find(patrimonio.FilialId);
-                    patrimonio.FilialNome = filial.NomeFilial;
+                    if (patrimonio.FilialId != null && patrimonio.FilialId > 0)
+                    {
+                        var filial = db.Filials.Find(patrimonio.FilialId);
+                        patrimonio.FilialNome = filial.NomeFilial;
+                    }
 
-                    var empresa = db.Empresas.Find(filial.EmpresaId);
+
+                    var empresa = db.Empresas.Find(patrimonio.EmpresaId);
                     patrimonio.EmpresaNome = empresa.Nome;
                     patrimonio.EmpresaId = empresa.Id;
 

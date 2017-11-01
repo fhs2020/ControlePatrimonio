@@ -14,7 +14,7 @@
 <h2>Editar</h2>
 
 @using (Html.BeginForm("Edit", "Produto", FormMethod.Post,
-                                                       new { enctype = "multipart/form-data" }))
+                                                                   new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.URLFoto)
@@ -145,47 +145,62 @@
 
 @section Scripts {
     <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
-@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-        $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
-        $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
-        $("#CEP").inputmask("mask", { "mask": "99999-999" });
-        $("#DataAquisicao").inputmask("mask", { "mask": "99/99/9999" });
+            $("#Telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#CNPJ").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#CEP").inputmask("mask", { "mask": "99999-999" });
+            $("#DataAquisicao").inputmask("mask", { "mask": "99/99/9999" });
 
 
-       
-    });
 
-            //$("#NomeProduto").keypress(function (event) {
-            //    var inputValue = event.charCode;
-            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-            //        event.preventDefault();
-            //    }
-            //});
+        });
 
-            //$("#Cidade").keypress(function (event) {
-            //    var inputValue = event.charCode;
-            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-            //        event.preventDefault();
-            //    }
-            //});
+        //$("#NomeProduto").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
-            //$("#Estado").keypress(function (event) {
-            //    var inputValue = event.charCode;
-            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-            //        event.preventDefault();
-            //    }
-            //});
+        //$("#Cidade").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
-            //$("#Pais").keypress(function (event) {
-            //    var inputValue = event.charCode;
-            //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
-            //        event.preventDefault();
-            //    }
-            //});
+        //$("#Estado").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
 
-</script>
+        //$("#Pais").keypress(function (event) {
+        //    var inputValue = event.charCode;
+        //    if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+        //        event.preventDefault();
+        //    }
+        //});
+
+        $('#NomeProduto').keyup(function () {
+            var text = $('#NomeProduto').val();
+            $(this).val(text.toUpperCase());
+        });
+
+        $('#Marca').keyup(function () {
+            var text = $('#Marca').val();
+            $(this).val(text.toUpperCase());
+        });
+
+        $('#Modelo').keyup(function () {
+            var text = $('#Modelo').val();
+            $(this).val(text.toUpperCase());
+        });
+
+    </script>
 }

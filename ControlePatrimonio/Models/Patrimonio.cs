@@ -11,7 +11,7 @@ namespace ControlePatrimonio.Models
         public int Id { get; set; }
         public int EmpresaId { get; set; }
         public String EmpresaNome { get; set; }
-        public int FilialId { get; set; }
+        public int? FilialId { get; set; }
         public String FilialNome { get; set; }
         public int FornecedorId { get; set; }
         public String FornecedorNome { get; set; }
@@ -24,7 +24,7 @@ namespace ControlePatrimonio.Models
 
         public String NumeroSerie { get; set; }
         public String NumeroPatrimonio { get; set; }
-        public int TempoGarantia { get; set; }
+        public int? TempoGarantia { get; set; }
         public String Licensa { get; set; }
         public String Observacao { get; set; }
         public String UserId { get; set; }

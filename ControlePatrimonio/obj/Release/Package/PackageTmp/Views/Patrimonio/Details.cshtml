@@ -31,7 +31,15 @@
         </dt>
 
         <dd>
-            @Model.FilialNome.ToUpper()
+            @if (Model.FilialNome != null)
+            {
+                @Model.FilialNome.ToUpper()
+            }
+            else
+            {
+                @Model.FilialNome
+            }
+
         </dd>
 
         <dt>
@@ -39,7 +47,15 @@
         </dt>
 
         <dd>
-            @Model.FornecedorNome.ToUpper()
+            @if (Model.FornecedorNome != null)
+            {
+                @Model.FornecedorNome.ToUpper()
+            }
+            else
+            {
+                @Model.FornecedorNome
+            }
+
         </dd>
 
         <dt>

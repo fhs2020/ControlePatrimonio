@@ -128,3 +128,6 @@ C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\bin\Co
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.csprojResolveAssemblyReference.cache
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.First_Migration.resources
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.csproj.GenerateResource.Cache
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Make_FilialID_nullable.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.TempoGarantia_Nullable.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Tempo_Garantia_not_null.resources
