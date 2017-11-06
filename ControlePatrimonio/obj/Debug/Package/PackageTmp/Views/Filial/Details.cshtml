@@ -1,0 +1,74 @@
+﻿@model ControlePatrimonio.Models.Filial
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes da Filial</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Empresa
+        </dt>
+
+        <dd>
+            @Model.EmpresaNome.ToUpper()
+        </dd>
+
+        <dt>
+            Filial
+        </dt>
+
+        <dd>
+            @Model.NomeFilial.ToUpper()
+        </dd>
+
+        <dt>
+            CNPJ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+
+        <dt>
+            Endereço
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para lista de filiais", "Index")
+</p>

@@ -1,0 +1,111 @@
+﻿@model ControlePatrimonio.Models.Filial
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Html.HiddenFor(model => model.Id)
+
+<h2>Excluir</h2>
+
+<h3>Certeza voce deseja excluir esta filial?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Empresa
+        </dt>
+
+        <dd>
+            @if (Model.EmpresaNome != null)
+            {
+                @Model.EmpresaNome.ToUpper()
+            }
+            else
+            {
+                @Model.EmpresaNome
+            }
+
+        </dd>
+
+        <dt>
+            Filial
+            @Html.HiddenFor(model => model.EmpresaId)
+        </dt>
+
+        <dd>
+            @Model.NomeFilial.ToUpper()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input id="Excluir" type="button" value="Excluir" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar para lista de Filiais", "Index")
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#Excluir").on("click", function () {
+
+                var IdEmpresa = $('#Id').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Filial/Delete",
+                    cache: false,
+                    data: { Id: IdEmpresa }
+                }).done(function (data) {
+                    if (data.success == true) {
+                        if (data.success) {
+                            loadURL("/Filial/index/");
+                            alert("Filial excluida com sucesso!");
+                        }
+                    } else {
+                        window.location.href = '@Url.Action("Index", "Filial")';
+                        alert(data.Message);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+}

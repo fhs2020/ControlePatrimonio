@@ -244,6 +244,30 @@
     <Compile Include="Migrations\201711011816112_Tempo_Garantia_not_null.Designer.cs">
       <DependentUpon>201711011816112_Tempo_Garantia_not_null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711060957573_nova propriedade taxadepreciacao.cs" />
+    <Compile Include="Migrations\201711060957573_nova propriedade taxadepreciacao.Designer.cs">
+      <DependentUpon>201711060957573_nova propriedade taxadepreciacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061005118_Depreciacao.cs" />
+    <Compile Include="Migrations\201711061005118_Depreciacao.Designer.cs">
+      <DependentUpon>201711061005118_Depreciacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061048358_DataExpiracao_vida_util_produto.cs" />
+    <Compile Include="Migrations\201711061048358_DataExpiracao_vida_util_produto.Designer.cs">
+      <DependentUpon>201711061048358_DataExpiracao_vida_util_produto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061228478_Change_field_to_Decimal.cs" />
+    <Compile Include="Migrations\201711061228478_Change_field_to_Decimal.Designer.cs">
+      <DependentUpon>201711061228478_Change_field_to_Decimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061525147_Novos_atributos_class_Patrimonio.cs" />
+    <Compile Include="Migrations\201711061525147_Novos_atributos_class_Patrimonio.Designer.cs">
+      <DependentUpon>201711061525147_Novos_atributos_class_Patrimonio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061558384_Mudança_na_DataDeAquisição.cs" />
+    <Compile Include="Migrations\201711061558384_Mudança_na_DataDeAquisição.Designer.cs">
+      <DependentUpon>201711061558384_Mudança_na_DataDeAquisição.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -466,6 +490,7 @@
     <Content Include="Views\Categoria\Details.cshtml" />
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Patrimonio\Depreciacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -495,6 +520,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711011816112_Tempo_Garantia_not_null.resx">
       <DependentUpon>201711011816112_Tempo_Garantia_not_null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060957573_nova propriedade taxadepreciacao.resx">
+      <DependentUpon>201711060957573_nova propriedade taxadepreciacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061005118_Depreciacao.resx">
+      <DependentUpon>201711061005118_Depreciacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061048358_DataExpiracao_vida_util_produto.resx">
+      <DependentUpon>201711061048358_DataExpiracao_vida_util_produto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061228478_Change_field_to_Decimal.resx">
+      <DependentUpon>201711061228478_Change_field_to_Decimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061525147_Novos_atributos_class_Patrimonio.resx">
+      <DependentUpon>201711061525147_Novos_atributos_class_Patrimonio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061558384_Mudança_na_DataDeAquisição.resx">
+      <DependentUpon>201711061558384_Mudança_na_DataDeAquisição.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

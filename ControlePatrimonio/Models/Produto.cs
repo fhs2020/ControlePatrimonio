@@ -17,14 +17,21 @@ namespace ControlePatrimonio.Models
         public String Obsrvacao { get; set; }
         public String URLFoto { get; set; }
         public String Descricao { get; set; }
-        
 
         [DataType(DataType.Currency)]
-        public float Valor { get; set; }
+        public decimal Valor { get; set; }
+
+        //[DataType(DataType.Currency)]
+        //public decimal? ValorDepreciadoMensal { get; set; }
+
+        //public int? PrazoVidaUtilProduto { get; set; }
+
+        //public DateTime? ProdutoDataVidaUtilExpiracao { get; set; }
+
         public String NotaFiscal { get; set; }
         public int? TempoGarantia { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DataAquisicao { get; set; }
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime DataAquisicao { get; set; }
     }
 }

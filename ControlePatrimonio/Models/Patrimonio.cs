@@ -19,8 +19,18 @@ namespace ControlePatrimonio.Models
         public Produto Produto { get; set; }
         public String ProdutoNome { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataAquisicao { get; set; }
+
         public DateTime DataCadastro { get; set; }
         public String Descricao { get; set; }
+
+        [DataType(DataType.Currency)]
+        public decimal? ValorDepreciadoMensal { get; set; }
+
+        public int? PrazoVidaUtilProduto { get; set; }
+
+        public DateTime? ProdutoDataVidaUtilExpiracao { get; set; }
 
         public String NumeroSerie { get; set; }
         public String NumeroPatrimonio { get; set; }

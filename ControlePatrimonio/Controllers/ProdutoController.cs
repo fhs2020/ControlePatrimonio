@@ -79,6 +79,72 @@ namespace ControlePatrimonio.Controllers
             
         }
 
+
+        //// GET: Produto
+        //public ActionResult Depreciacao(String search)
+        //{
+        //    var produtoLista = db.Produtos.ToList();
+
+        //    var listaDeProdutos = new List<Produto>();
+
+        //    foreach (var item in produtoLista)
+        //    {
+        //        var categoria = db.Categorias.Find(item.CategoriaID);
+
+        //        item.Categoria = new Categoria();
+
+        //        item.Categoria.TipoCategoria = categoria.TipoCategoria;
+
+        //        item.Categoria.ID = categoria.ID;
+
+        //        listaDeProdutos.Add(item);
+
+        //    }
+
+
+        //    if (!String.IsNullOrEmpty(search))
+        //    {
+        //        search.ToLower();
+
+        //        var listaProdutosSearch = db.Produtos.ToList();
+
+        //        var novaListaProdutos = new List<Produto>();
+
+        //        foreach (var item in listaDeProdutos)
+        //        {
+        //            var categoriaProdutoSearched = db.Categorias.Find(item.CategoriaID);
+
+        //            item.Categoria = new Categoria();
+
+        //            item.Categoria.TipoCategoria = categoriaProdutoSearched.TipoCategoria;
+        //            item.CategoriaID = categoriaProdutoSearched.ID;
+
+        //            novaListaProdutos.Add(item);
+        //        }
+
+        //        var produtosSearched = novaListaProdutos.Where(s => s.Categoria.TipoCategoria.ToLower().Contains(search) || s.Marca.ToLower().Contains(search) ||
+        //                   s.Modelo.ToLower().Contains(search) || s.NomeProduto.ToLower().Contains(search)).ToList();
+
+        //        if (produtosSearched != null)
+        //        {
+        //            return View(produtosSearched);
+        //        }
+        //        else
+        //        {
+        //            return View();
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        return View(listaDeProdutos.ToList());
+        //    }
+
+
+        //}
+
+
+
         // GET: Produto/Details/5
         public ActionResult Details(int? id)
         {
@@ -123,26 +189,52 @@ namespace ControlePatrimonio.Controllers
         [PreventDuplicateRequest]
         public ActionResult Create(Produto produto, HttpPostedFileBase fileImage)
         {
+    
+            //if (produto.DataAquisicao != null)
+            //{
+            //    var categoria = db.Categorias.Find(produto.CategoriaID);
+
+            //    produto.Categoria = categoria;
+
+            //    var dataExpiracao = produto.DataAquisicao.AddYears(produto.Categoria.PrazoVidaUtilGeral);
+
+            //    produto.ProdutoDataVidaUtilExpiracao = dataExpiracao;
+
+            //    var dataValida = DateTime.Parse(produto.ProdutoDataVidaUtilExpiracao.ToString());
+
+            //    if (dataValida > DateTime.Now)
+            //    {
+            //        var porcentagem = (produto.Categoria.TaxaPorcentagemDepreciacao / 100);
+
+            //        var taxa = (produto.Valor * (decimal)porcentagem);
+
+            //        var valorMensal = (taxa / 12);
+
+            //        produto.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
+            //    }
+            //}
 
             var categoriaLista = db.Categorias.ToList();
 
             ViewBag.Categoria = new SelectList(categoriaLista, "ID", "TipoCategoria");
 
-            if (fileImage != null)
-            {
-
-                string path = System.IO.Path.Combine(Server.MapPath("~/Images"),
-                                  Path.GetFileName(fileImage.FileName));
-
-                fileImage.SaveAs(path);
-
-                produto.URLFoto = path;
-
-                ViewBag.Message = "File uploaded successfully";
-            }
 
             if (ModelState.IsValid)
             {
+
+                if (fileImage != null)
+                {
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/Images"),
+                         Path.GetFileName(fileImage.FileName));
+
+                    fileImage.SaveAs(path);
+
+                    produto.URLFoto = path;
+
+                    ViewBag.Message = "File uploaded successfully";
+                }
+
+
                 db.Produtos.Add(produto);
                 db.SaveChanges();
                 return RedirectToAction("Index");

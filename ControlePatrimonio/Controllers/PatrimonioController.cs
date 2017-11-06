@@ -85,6 +85,74 @@ namespace ControlePatrimonio.Controllers
             }
         }
 
+
+        // GET: Produto
+        public ActionResult Depreciacao(String search)
+        {
+            var pratrimonioLista = db.Patrimonios.ToList();
+
+            var listaDePatrimonio = new List<Patrimonio>();
+
+            foreach (var item in pratrimonioLista)
+            {
+
+                item.Produto = db.Produtos.Find(item.ProdutoId);
+
+                var categoria = db.Categorias.Find(item.Produto.CategoriaID);
+
+                item.Produto.Categoria = new Categoria();
+
+                item.Produto.Categoria.TipoCategoria = categoria.TipoCategoria;
+
+                item.Produto.Categoria.ID = categoria.ID;
+
+                listaDePatrimonio.Add(item);
+
+            }
+
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                search.ToLower();
+
+                var listaProdutosSearch = db.Produtos.ToList();
+
+                var novaListaPatrimonio = new List<Patrimonio>();
+
+                foreach (var item in listaDePatrimonio)
+                {
+                    var categoriaProdutoSearched = db.Categorias.Find(item.Produto.CategoriaID);
+
+                    item.Produto.Categoria = new Categoria();
+
+                    item.Produto.Categoria.TipoCategoria = categoriaProdutoSearched.TipoCategoria;
+                    item.Produto.CategoriaID = categoriaProdutoSearched.ID;
+
+                    novaListaPatrimonio.Add(item);
+                }
+
+                var produtosSearched = novaListaPatrimonio.Where(s => s.Produto.Categoria.TipoCategoria.ToLower().Contains(search) || s.Produto.Marca.ToLower().Contains(search) ||
+                           s.Produto.Modelo.ToLower().Contains(search) || s.Produto.NomeProduto.ToLower().Contains(search)).ToList();
+
+                if (produtosSearched != null)
+                {
+                    return View(produtosSearched);
+                }
+                else
+                {
+                    return View();
+                }
+
+            }
+            else
+            {
+                return View(listaDePatrimonio.ToList());
+            }
+
+
+        }
+
+
         // GET: Patrimonio/Details/5
         public ActionResult Details(int? id)
         {
@@ -209,10 +277,39 @@ namespace ControlePatrimonio.Controllers
 
                     }
 
-
                     patrimonio.UserId = usuarioId;
 
                     patrimonio.DataCadastro = DateTime.Now;
+
+                    patrimonio.Produto = db.Produtos.Find(patrimonio.ProdutoId);
+
+                    if (patrimonio.Produto != null)
+                    {
+                        if (patrimonio.DataAquisicao != null)
+                        {
+                            var categoria = db.Categorias.Find(patrimonio.Produto.CategoriaID);
+
+                            patrimonio.Produto.Categoria = categoria;
+
+                            var dataExpiracao = patrimonio.DataAquisicao.AddYears(patrimonio.Produto.Categoria.PrazoVidaUtilGeral);
+
+                            patrimonio.ProdutoDataVidaUtilExpiracao = dataExpiracao;
+
+                            var dataValida = DateTime.Parse(patrimonio.ProdutoDataVidaUtilExpiracao.ToString());
+
+                            if (dataValida > DateTime.Now)
+                            {
+                                var porcentagem = (patrimonio.Produto.Categoria.TaxaPorcentagemDepreciacao / 100);
+
+                                var taxa = (patrimonio.Produto.Valor * (decimal)porcentagem);
+
+                                var valorMensal = (taxa / 12);
+
+                                patrimonio.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
+                            }
+                        }
+                    }
+
 
                     if (fileImage != null)
                     {
@@ -452,6 +549,36 @@ namespace ControlePatrimonio.Controllers
 
                 if (ModelState.IsValid)
                 {
+                    patrimonio.Produto = db.Produtos.Find(patrimonio.ProdutoId);
+
+                    if (patrimonio.Produto != null)
+                    {
+                        if (patrimonio.DataAquisicao != null)
+                        {
+                            var categoria = db.Categorias.Find(patrimonio.Produto.CategoriaID);
+
+                            patrimonio.Produto.Categoria = categoria;
+
+                            var dataExpiracao = patrimonio.DataAquisicao.AddYears(patrimonio.Produto.Categoria.PrazoVidaUtilGeral);
+
+                            patrimonio.ProdutoDataVidaUtilExpiracao = dataExpiracao;
+
+                            var dataValida = DateTime.Parse(patrimonio.ProdutoDataVidaUtilExpiracao.ToString());
+
+                            if (dataValida > DateTime.Now)
+                            {
+                                var porcentagem = (patrimonio.Produto.Categoria.TaxaPorcentagemDepreciacao / 100);
+
+                                var taxa = (patrimonio.Produto.Valor * (decimal)porcentagem);
+
+                                var valorMensal = (taxa / 12);
+
+                                patrimonio.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
+                            }
+                        }
+                    }
+
+
                     if (fileImage != null)
                     {
                         string path = System.IO.Path.Combine(Server.MapPath("~/Content/Images"),

@@ -11,11 +11,27 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Tipo Categoria
+            Descrição
         </dt>
 
         <dd>
-            @Model.TipoCategoria.ToUpper()
+            @Model.TipoCategoria
+        </dd>
+
+        <dt>
+            Prazo de vida útil (anos)
+        </dt>
+
+        <dd>
+            @Model.PrazoVidaUtilGeral
+        </dd>
+
+        <dt>
+            Taxa anual de depre-ciação
+        </dt>
+
+        <dd>
+            @Model.TaxaPorcentagemDepreciacao %
         </dd>
 
     </dl>

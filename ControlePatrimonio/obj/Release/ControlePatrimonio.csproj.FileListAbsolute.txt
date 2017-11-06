@@ -131,3 +131,7 @@ C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Re
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Make_FilialID_nullable.resources
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.TempoGarantia_Nullable.resources
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Tempo_Garantia_not_null.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.novapropriedadetaxadepreciacao.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Depreciacao.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.DataExpiracao_vida_util_produto.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Change_field_to_Decimal.resources

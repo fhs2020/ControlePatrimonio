@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Categoria</h2>
 
 <p>
     @Html.ActionLink("Criar nova categoria", "Create")
@@ -12,16 +12,35 @@
 <table class="table">
     <tr>
         <th>
-            Tipo Categoria
+            Descrição
         </th>
+
+        <th>
+            Anos de Vida ùtil
+        </th>
+
+        <th>
+            Taxa anual de depre-ciação
+        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @item.TipoCategoria.ToUpper()
+            @item.TipoCategoria
         </td>
+
+        <td>
+            @item.PrazoVidaUtilGeral
+        </td>
+
+        <td>
+            @item.TaxaPorcentagemDepreciacao %
+        </td>
+
+
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |

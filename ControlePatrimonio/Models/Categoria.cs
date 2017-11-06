@@ -9,5 +9,7 @@ namespace ControlePatrimonio.Models
     {
         public int ID { get; set; }
         public String TipoCategoria { get; set; }
+        public double TaxaPorcentagemDepreciacao { get; set; }
+        public int PrazoVidaUtilGeral { get; set; }
     }
 }

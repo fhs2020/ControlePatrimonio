@@ -1,0 +1,129 @@
+﻿@model ControlePatrimonio.Models.Fornecedor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Html.HiddenFor(model => model.Id)
+
+<h2>Excluir</h2>
+
+<h3>Certeza que deseja excluir este fornecedor?</h3>
+<div>
+    <h4>Fornecedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+             @Model.Nome.ToUpper()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UF)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input id="Excluir" type="button" value="Excluir" class="btn btn-danger btn-danger" /> |
+            @Html.ActionLink("Voltar para lista de fornecedores", "Index")
+        </div>
+    }
+</div>
+
+
+
+
+@section Scripts {
+
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#Excluir").on("click", function () {
+
+                var IdEmpresa = $('#Id').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Fornecedor/Delete",
+                    cache: false,
+                    data: { Id: IdEmpresa }
+                }).done(function (data) {
+                    if (data.success == true) {
+                        if (data.success) {
+                            loadURL("/Fornecedor/index/");
+                            alert("Empresa excluida com sucesso!");
+                        }
+                    } else {
+                        window.location.href = '@Url.Action("Index", "Fornecedor")';
+                        alert(data.Message);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+}

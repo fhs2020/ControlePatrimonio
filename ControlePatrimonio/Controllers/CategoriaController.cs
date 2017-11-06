@@ -45,11 +45,14 @@ namespace ControlePatrimonio.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,TipoCategoria")] Categoria categoria)
+        public ActionResult Create(Categoria categoria, string TaxaPorcentagem)
         {
             if (ModelState.IsValid)
             {
+                var taxa  = TaxaPorcentagem.Replace("%", "");
+
+                categoria.TaxaPorcentagemDepreciacao = double.Parse(taxa);
+
                 var categoriaNome = categoria.TipoCategoria;
 
                 categoria.TipoCategoria = null;
@@ -79,12 +82,9 @@ namespace ControlePatrimonio.Controllers
             return View(categoria);
         }
 
-        // POST: Categoria/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TipoCategoria")] Categoria categoria)
+        public ActionResult Edit(Categoria categoria)
         {
             if (ModelState.IsValid)
             {
