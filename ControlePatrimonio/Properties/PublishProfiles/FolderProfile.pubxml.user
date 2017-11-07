@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:46</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.dll">
-      <publishTime>11/06/2017 11:18:09</publishTime>
+      <publishTime>11/06/2017 18:08:13</publishTime>
     </File>
     <File Include="bin/ControlePatrimonio.pdb">
-      <publishTime>11/06/2017 11:18:09</publishTime>
+      <publishTime>11/06/2017 18:08:13</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -475,7 +475,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:36</publishTime>
     </File>
     <File Include="Images/computador.jpg">
-      <publishTime>10/30/2017 18:14:34</publishTime>
+      <publishTime>11/06/2017 14:23:26</publishTime>
     </File>
     <File Include="Images/medidor de gas 22.jpg">
       <publishTime>10/26/2017 08:24:57</publishTime>
@@ -835,34 +835,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Patrimonio/Create.cshtml">
-      <publishTime>11/01/2017 15:13:20</publishTime>
+      <publishTime>11/06/2017 14:10:01</publishTime>
     </File>
     <File Include="Views/Patrimonio/Delete.cshtml">
-      <publishTime>11/01/2017 11:32:41</publishTime>
+      <publishTime>11/06/2017 14:02:53</publishTime>
+    </File>
+    <File Include="Views/Patrimonio/Depreciacao.cshtml">
+      <publishTime>11/07/2017 09:19:21</publishTime>
     </File>
     <File Include="Views/Patrimonio/Details.cshtml">
-      <publishTime>11/01/2017 11:31:08</publishTime>
+      <publishTime>11/06/2017 14:03:07</publishTime>
     </File>
     <File Include="Views/Patrimonio/Edit.cshtml">
-      <publishTime>11/01/2017 11:56:02</publishTime>
+      <publishTime>11/06/2017 14:04:06</publishTime>
     </File>
     <File Include="Views/Patrimonio/Index.cshtml">
       <publishTime>11/01/2017 09:08:53</publishTime>
     </File>
     <File Include="Views/Produto/Create.cshtml">
-      <publishTime>11/06/2017 10:33:02</publishTime>
+      <publishTime>11/06/2017 14:01:25</publishTime>
     </File>
     <File Include="Views/Produto/Delete.cshtml">
-      <publishTime>11/06/2017 10:35:42</publishTime>
+      <publishTime>11/06/2017 14:01:40</publishTime>
     </File>
     <File Include="Views/Produto/Depreciacao.cshtml">
       <publishTime>11/06/2017 11:16:31</publishTime>
     </File>
     <File Include="Views/Produto/Details.cshtml">
-      <publishTime>11/06/2017 10:36:21</publishTime>
+      <publishTime>11/06/2017 14:01:56</publishTime>
     </File>
     <File Include="Views/Produto/Edit.cshtml">
-      <publishTime>11/01/2017 13:00:49</publishTime>
+      <publishTime>11/06/2017 14:02:14</publishTime>
     </File>
     <File Include="Views/Produto/Index.cshtml">
       <publishTime>10/30/2017 15:35:28</publishTime>
@@ -874,7 +877,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/16/2017 17:32:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/06/2017 11:05:48</publishTime>
+      <publishTime>11/06/2017 13:22:13</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/01/2017 16:51:15</publishTime>

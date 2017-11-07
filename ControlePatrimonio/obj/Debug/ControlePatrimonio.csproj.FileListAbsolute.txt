@@ -136,3 +136,4 @@ C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\De
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Debug\ControlePatrimonio.csproj.CoreCompileInputs.cache
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Debug\ControlePatrimonio.dll
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Debug\ControlePatrimonio.pdb
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Debug\ControlePatrimonio.csprojResolveAssemblyReference.cache

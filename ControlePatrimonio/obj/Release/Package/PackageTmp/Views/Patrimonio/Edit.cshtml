@@ -17,11 +17,11 @@
 
 
 @using (Html.BeginForm("Edit", "Patrimonio", FormMethod.Post,
-                                           new { enctype = "multipart/form-data" }))
+                                                       new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @*@Html.HiddenFor(model => model.URLImage)*@
-    
+
     <div class="form-horizontal">
         <h4>Patrimonio</h4>
         <hr />
@@ -66,12 +66,19 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.DataAquisicao, "Data aquisição", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataAquisicao, "Data Aquisição", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataAquisicao, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DataAquisicao, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-        </div>*@
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.DataAquisicao, "Data aquisição", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataAquisicao, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Descricao, "Descrição", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -82,20 +89,20 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control", @data_val = "false" } })
-                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control", @data_val = "false" } })
+                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.NotaFiscal, "Nota Fiscal", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NotaFiscal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NotaFiscal, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.NotaFiscal, "Nota Fiscal", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NotaFiscal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NotaFiscal, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.NumeroSerie, "N° Serie", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -137,23 +144,23 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.URLImage, "Nova Imagem", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="fileImage" class="form-control" /><br><br>
-                <br><br>
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.URLImage, "Nova Imagem", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="fileImage" class="form-control" /><br><br>
+                    <br><br>
+                </div>
+            </div>*@
 
 
         @*@if (img.Name != "Hello")
-        {
-            <div class="form-group">
-                @Html.LabelFor(model => model.URLImage, "Imagem", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col" style="width: 500px;">
-                    <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.URLImage, "Imagem", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col" style="width: 500px;">
+                        <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
+                    </div>
                 </div>
-            </div>
-        }*@
+            }*@
 
 
         <div class="form-group">
@@ -177,37 +184,40 @@
 
 
     <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("#DataAquisicao").inputmask("mask", { "mask": "99/99/9999" });
+        });
 
 
-            $('#CategoriaID').mouseleave(function () {
-                var procemessage = "<option value='0'> Please wait...</option>";
-                $("#ProduId").html(procemessage).show();
-                var url = "/Patrimonio/GetProdutoByCategoriaID/";
-                var categoriaId = $('#CategoriaID').val();
+        $('#CategoriaID').mouseleave(function () {
+            var procemessage = "<option value='0'> Please wait...</option>";
+            $("#ProduId").html(procemessage).show();
+            var url = "/Patrimonio/GetProdutoByCategoriaID/";
+            var categoriaId = $('#CategoriaID').val();
 
-                $.ajax({
-                    url: url,
-                    data: { categoriaId: categoriaId },
-                    cache: false,
-                    type: "POST",
-                    success: function (data) {
-                        var markup = "<option value='0'>Selecione produto</option>";
-                        for (var x = 0; x < data.length; x++) {
-                            markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                        }
-                        $("#ProdutoId").html(markup).show();
-                    },
-                    error: function (reponse) {
-                        alert("error : " + reponse);
+            $.ajax({
+                url: url,
+                data: { categoriaId: categoriaId },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='0'>Selecione produto</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                     }
-                });
+                    $("#ProdutoId").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
 
         });
 
         $('#EmpresaId').change(function () {
 
             var procemessage = "<option value='0'> Please wait...</option>";
-            
+
             var url = "/Patrimonio/GetFilialByEmpresaID/";
             var empresaId = $('#EmpresaId').val();
             debugger;
