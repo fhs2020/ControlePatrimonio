@@ -37,6 +37,9 @@
             Produto
         </th>
         <th>
+            Número da Nota Fiscal
+        </th>
+        <th>
            Número de serie
         </th>
         <th>
@@ -73,6 +76,9 @@
                 @item.ProdutoNome
             }
 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotaFiscal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumeroSerie)

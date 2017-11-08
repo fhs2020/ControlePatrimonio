@@ -18,6 +18,7 @@ namespace ControlePatrimonio.Models
         public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
         public String ProdutoNome { get; set; }
+        public String NotaFiscal { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataAquisicao { get; set; }

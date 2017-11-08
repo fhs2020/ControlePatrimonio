@@ -39,6 +39,10 @@
         </th>
 
         <th>
+            Número da nota fiscal
+        </th>
+
+        <th>
            Valor original
         </th>
 
@@ -51,6 +55,9 @@
 
     @foreach (var item in Model)
     {
+
+        if (!string.IsNullOrEmpty(item.NotaFiscal))
+        {
         <tr>
             <td>
                 @item.Produto.Categoria.TipoCategoria.ToUpper()
@@ -58,6 +65,10 @@
 
             <td>
                 @item.Produto.NomeProduto.ToUpper()
+            </td>
+
+            <td>
+                @item.NotaFiscal
             </td>
 
             <td>
@@ -80,6 +91,7 @@
                 @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
             </td>
         </tr>
+        }
     }
 
 </table>

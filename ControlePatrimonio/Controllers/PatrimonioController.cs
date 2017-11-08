@@ -93,7 +93,7 @@ namespace ControlePatrimonio.Controllers
 
             var listaDePatrimonio = new List<Patrimonio>();
 
-            foreach (var item in pratrimonioLista)
+            foreach (var item in pratrimonioLista.Where(x => x.NotaFiscal != null))
             {
 
                 item.Produto = db.Produtos.Find(item.ProdutoId);
@@ -498,17 +498,13 @@ namespace ControlePatrimonio.Controllers
                                             c.Marca, c.Modelo)
             }).ToList();
 
-            ViewBag.ProdutosLista = new SelectList(listaProduto, "Id", "NomeProduto");
+            ViewBag.ProdutosLista = new SelectList(produtosLista, "Id", "NomeProduto", patrimonio.Produto.Id);
 
             //ViewBag.Image = patrimonio.URLImage;
 
+            var categoriaList = db.Categorias.ToList();        
 
-            var categoriaList = db.Categorias.ToList();
-        
-
-            ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
-
-      
+            ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria", patrimonio.Produto.Categoria.ID);      
 
             if (patrimonio == null)
             {
@@ -527,25 +523,27 @@ namespace ControlePatrimonio.Controllers
         {
             try
             {
+                if (patrimonio.ProdutoId == 0)
+                {
+                    throw new ApplicationException("Por favor selecione um produto");
+                }
+
                 var listaPatrimonio = db.Patrimonios.ToList();
 
+                var empresaLista = db.Empresas.ToList();
+
+                //var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
+                //{
+                //    Id = c.Id,
+                //    NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
+                //                                c.NomeFilial)
+                //}).ToList();
+
+                ViewBag.Empresa = new SelectList(empresaLista, "Id", "Nome");
 
                 var categoriaList = db.Categorias.ToList();
 
                 ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
-
-                //foreach (var item in listaPatrimonio)
-                //{
-                //    if (item.NumeroSerie == patrimonio.NumeroSerie)
-                //    {
-                //        throw new ApplicationException("Este número de serie ja esta cadastrado com outro produto");
-                //    }
-
-                //    if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
-                //    {
-                //        throw new ApplicationException("Este número de patrimonio já esta cadastrado com outro produto");
-                //    }
-                //}
 
                 if (ModelState.IsValid)
                 {

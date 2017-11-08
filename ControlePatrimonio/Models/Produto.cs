@@ -28,7 +28,6 @@ namespace ControlePatrimonio.Models
 
         //public DateTime? ProdutoDataVidaUtilExpiracao { get; set; }
 
-        public String NotaFiscal { get; set; }
         public int? TempoGarantia { get; set; }
 
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
