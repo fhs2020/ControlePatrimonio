@@ -17,7 +17,7 @@
 
 
 @using (Html.BeginForm("Edit", "Patrimonio", FormMethod.Post,
-                                                       new { enctype = "multipart/form-data" }))
+                                                                   new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @*@Html.HiddenFor(model => model.URLImage)*@
@@ -189,6 +189,7 @@
 
 @section Scripts {
 
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
 
 

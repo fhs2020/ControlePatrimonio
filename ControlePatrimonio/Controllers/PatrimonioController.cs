@@ -32,14 +32,14 @@ namespace ControlePatrimonio.Controllers
 
                 var listaPatrimonio = db.Patrimonios.ToList();
 
-                var patrimoniosSearched = listaPatrimonio.Where(s => s.EmpresaNome.ToLower().Contains(search) || 
+                var patrimoniosSearched = listaPatrimonio.Where(s => s.EmpresaNome.ToLower().Contains(search) ||
                            s.ProdutoNome.ToLower().Contains(search) || s.NumeroPatrimonio.ToLower().Contains(search)).ToList();
 
-                foreach(var item in listaPatrimonio)
+                foreach (var item in listaPatrimonio)
                 {
                     if (item.NumeroSerie != null)
                     {
-                       if(string.Equals(item.NumeroSerie.ToLower(), search))
+                        if (string.Equals(item.NumeroSerie.ToLower(), search))
                         {
                             patrimoniosSearched.Add(item);
                         }
@@ -95,18 +95,21 @@ namespace ControlePatrimonio.Controllers
 
             foreach (var item in pratrimonioLista.Where(x => x.NotaFiscal != null))
             {
+                if (!String.IsNullOrEmpty(item.NotaFiscal) && item.NotaFiscal != " ")
+                {
+                    item.Produto = db.Produtos.Find(item.ProdutoId);
 
-                item.Produto = db.Produtos.Find(item.ProdutoId);
+                    var categoria = db.Categorias.Find(item.Produto.CategoriaID);
 
-                var categoria = db.Categorias.Find(item.Produto.CategoriaID);
+                    item.Produto.Categoria = new Categoria();
 
-                item.Produto.Categoria = new Categoria();
+                    item.Produto.Categoria.TipoCategoria = categoria.TipoCategoria;
 
-                item.Produto.Categoria.TipoCategoria = categoria.TipoCategoria;
+                    item.Produto.Categoria.ID = categoria.ID;
 
-                item.Produto.Categoria.ID = categoria.ID;
+                    listaDePatrimonio.Add(item);
 
-                listaDePatrimonio.Add(item);
+                }
 
             }
 
@@ -246,136 +249,185 @@ namespace ControlePatrimonio.Controllers
         [PreventDuplicateRequest]
         public ActionResult Create(Patrimonio patrimonio, HttpPostedFileBase fileImage)
         {
-            var usuarioId = User.Identity.GetUserId();
-            var usuarioLogado = db.Users.Find(usuarioId);
-            
-            var listaPatrimonio = db.Patrimonios.ToList();
-
-            if (ModelState.IsValid)
+            try
             {
-                try
+                var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
                 {
-                    foreach (var item in listaPatrimonio)
-                    {
-                        if (patrimonio.NumeroSerie != null)
-                        {
-                            if (item.NumeroSerie == patrimonio.NumeroSerie)
-                            {
-                                throw new ApplicationException("Este número de serie já existe cadastrado com outro patrimonio");
+                    Id = c.Id,
+                    NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
+                                    c.NomeFilial)
+                }).ToList();
 
-                            }
-                        }
+                var categoriaList = db.Categorias.ToList();
 
-                        if (patrimonio.NumeroPatrimonio != null)
-                        {
-                            if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
-                            {
-                                throw new ApplicationException("Este número de patrimonio já existe cadastrado com outro patrimonio");
-                            }
-                        }
+                ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
 
+                ViewBag.Empresa = new SelectList(listaEmpresa, "id", "NomeEmpresa");
 
-                    }
-
-                    patrimonio.UserId = usuarioId;
-
-                    patrimonio.DataCadastro = DateTime.Now;
-
-                    patrimonio.Produto = db.Produtos.Find(patrimonio.ProdutoId);
-
-                    if (patrimonio.Produto != null)
-                    {
-                        if (patrimonio.DataAquisicao != null)
-                        {
-                            var categoria = db.Categorias.Find(patrimonio.Produto.CategoriaID);
-
-                            patrimonio.Produto.Categoria = categoria;
-
-                            var dataExpiracao = patrimonio.DataAquisicao.AddYears(patrimonio.Produto.Categoria.PrazoVidaUtilGeral);
-
-                            patrimonio.ProdutoDataVidaUtilExpiracao = dataExpiracao;
-
-                            var dataValida = DateTime.Parse(patrimonio.ProdutoDataVidaUtilExpiracao.ToString());
-
-                            if (dataValida > DateTime.Now)
-                            {
-                                var porcentagem = (patrimonio.Produto.Categoria.TaxaPorcentagemDepreciacao / 100);
-
-                                var taxa = (patrimonio.Produto.Valor * (decimal)porcentagem);
-
-                                var valorMensal = (taxa / 12);
-
-                                patrimonio.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
-                            }
-                        }
-                    }
-
-
-                    if (fileImage != null)
-                    {
-                       
-
-                        string path = System.IO.Path.Combine(Server.MapPath("~/Images"),
-                                          Path.GetFileName(fileImage.FileName));
-
-                        fileImage.SaveAs(path);
-
-                        //patrimonio.URLImage = path;
-
-                        ViewBag.Message = "File uploaded successfully";
-                    }
-
-                    if (patrimonio.EmpresaId != 0)
-                    {
-                        var empresaSelecionada = db.Empresas.Find(patrimonio.EmpresaId);
-                        patrimonio.EmpresaNome = empresaSelecionada.Nome;
-                    }
-                    else
-                    {
-                        throw new ApplicationException("Selecione uma empresa");
-                    }
-
-
-                    if (patrimonio.FilialId != null && patrimonio.FilialId > 0)
-                    {
-                        var filial = db.Filials.Find(patrimonio.FilialId);
-                        patrimonio.FilialNome = filial.NomeFilial;
-                    }
-
-
-                    if (patrimonio.ProdutoId != 0)
-                    {
-                        var produto = db.Produtos.Find(patrimonio.ProdutoId);
-                        patrimonio.ProdutoNome = produto.NomeProduto;
-                    }
-                    else
-                    {
-                        throw new ApplicationException("Selecione um produto!");
-                    }
-
-                    if (patrimonio.FornecedorId != 0)
-                    {
-                        var fornecedor = db.Fornecedors.Find(patrimonio.FornecedorId);
-                        patrimonio.FornecedorNome = fornecedor.Nome;
-                    }
-                    else
-                    {
-                        throw new ApplicationException("Selecione um fornecedor ou adicione um novo fornecedor");
-                    }
-
-                    db.Patrimonios.Add(patrimonio);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
+                if (patrimonio.DataAquisicao != null)
                 {
-
-                    throw new ApplicationException(ex.Message);
+                    if (patrimonio.DataAquisicao > DateTime.Now)
+                    {
+                        throw new ApplicationException("Data Aquisição invalida!");
+                    }
+                    else if (patrimonio.DataAquisicao.Value.Year < 2000)
+                    {
+                        throw new ApplicationException("Data Aquisição invalida!");
+                    }
                 }
 
-                return RedirectToAction("Index");
+
+                var usuarioId = User.Identity.GetUserId();
+                var usuarioLogado = db.Users.Find(usuarioId);
+
+                var listaPatrimonio = db.Patrimonios.ToList();
+
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        foreach (var item in listaPatrimonio)
+                        {
+                            if (patrimonio.NumeroSerie != null)
+                            {
+                                if (item.NumeroSerie == patrimonio.NumeroSerie)
+                                {
+                                    throw new ApplicationException("Este número de serie já existe cadastrado com outro patrimonio");
+
+                                }
+                            }
+
+                            if (patrimonio.NumeroPatrimonio != null)
+                            {
+                                if (item.NumeroPatrimonio == patrimonio.NumeroPatrimonio)
+                                {
+                                    throw new ApplicationException("Este número de patrimonio já existe cadastrado com outro patrimonio");
+                                }
+                            }
+                        }
+
+                        patrimonio.UserId = usuarioId;
+
+                        patrimonio.DataCadastro = DateTime.Now;
+
+                        patrimonio.Produto = db.Produtos.Find(patrimonio.ProdutoId);
+
+                        if (patrimonio.Produto != null)
+                        {
+                            if (patrimonio.DataAquisicao != null)
+                            {
+                                var categoria = db.Categorias.Find(patrimonio.Produto.CategoriaID);
+
+                                patrimonio.Produto.Categoria = categoria;
+
+                                if (patrimonio.DataAquisicao != null)
+                                {
+                                    var dataExpiracao = patrimonio.DataAquisicao.Value.AddYears(patrimonio.Produto.Categoria.PrazoVidaUtilGeral);
+
+                                    patrimonio.ProdutoDataVidaUtilExpiracao = dataExpiracao;
+
+                                    var dataValida = DateTime.Parse(patrimonio.ProdutoDataVidaUtilExpiracao.ToString());
+
+                                    if (dataValida > DateTime.Now)
+                                    {
+                                        var porcentagem = (patrimonio.Produto.Categoria.TaxaPorcentagemDepreciacao / 100);
+
+                                        var taxa = (patrimonio.Produto.Valor * (decimal)porcentagem);
+
+                                        var valorMensal = (taxa / 12);
+
+                                        patrimonio.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        if (fileImage != null)
+                        {
+
+
+                            string path = System.IO.Path.Combine(Server.MapPath("~/Images"),
+                                              Path.GetFileName(fileImage.FileName));
+
+                            fileImage.SaveAs(path);
+
+                            //patrimonio.URLImage = path;
+
+                            ViewBag.Message = "File uploaded successfully";
+                        }
+
+                        if (patrimonio.EmpresaId != 0)
+                        {
+                            var empresaSelecionada = db.Empresas.Find(patrimonio.EmpresaId);
+                            patrimonio.EmpresaNome = empresaSelecionada.Nome;
+                        }
+                        else
+                        {
+                            throw new ApplicationException("Selecione uma empresa");
+                        }
+
+
+                        if (patrimonio.FilialId != null && patrimonio.FilialId > 0)
+                        {
+                            var filial = db.Filials.Find(patrimonio.FilialId);
+                            patrimonio.FilialNome = filial.NomeFilial;
+                        }
+
+
+                        if (patrimonio.ProdutoId != 0)
+                        {
+                            var produto = db.Produtos.Find(patrimonio.ProdutoId);
+                            patrimonio.ProdutoNome = produto.NomeProduto;
+                        }
+                        else
+                        {
+                            throw new ApplicationException("Selecione um produto!");
+                        }
+
+                        if (patrimonio.FornecedorId != 0)
+                        {
+                            var fornecedor = db.Fornecedors.Find(patrimonio.FornecedorId);
+                            patrimonio.FornecedorNome = fornecedor.Nome;
+                        }
+                        else
+                        {
+                            throw new ApplicationException("Selecione um fornecedor ou adicione um novo fornecedor");
+                        }
+
+                        db.Patrimonios.Add(patrimonio);
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Empresa = new SelectList(listaEmpresa, "id", "NomeEmpresa");
+
+                        throw new ApplicationException(ex.Message);
+                    }
+                }
+
+                throw new ApplicationException("Tente novamente, erro no campo data aquisição");
+            }
+            catch (Exception ex)
+            {
+                var listaEmpresa = db.Filials.AsEnumerable().Select(c => new
+                {
+                    Id = c.Id,
+                    NomeEmpresa = string.Format("{0} - {1}", c.EmpresaNome,
+                    c.NomeFilial)
+                }).ToList();
+
+                var categoriaList = db.Categorias.ToList();
+
+                ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria");
+
+                ViewBag.Empresa = new SelectList(listaEmpresa, "id", "NomeEmpresa");
+
+                throw new ApplicationException(ex.Message);
             }
 
-            return View(patrimonio);
         }
 
 
@@ -502,9 +554,9 @@ namespace ControlePatrimonio.Controllers
 
             //ViewBag.Image = patrimonio.URLImage;
 
-            var categoriaList = db.Categorias.ToList();        
+            var categoriaList = db.Categorias.ToList();
 
-            ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria", patrimonio.Produto.Categoria.ID);      
+            ViewBag.Categoria = new SelectList(categoriaList, "ID", "TipoCategoria", patrimonio.Produto.Categoria.ID);
 
             if (patrimonio == null)
             {
@@ -557,21 +609,25 @@ namespace ControlePatrimonio.Controllers
 
                             patrimonio.Produto.Categoria = categoria;
 
-                            var dataExpiracao = patrimonio.DataAquisicao.AddYears(patrimonio.Produto.Categoria.PrazoVidaUtilGeral);
-
-                            patrimonio.ProdutoDataVidaUtilExpiracao = dataExpiracao;
-
-                            var dataValida = DateTime.Parse(patrimonio.ProdutoDataVidaUtilExpiracao.ToString());
-
-                            if (dataValida > DateTime.Now)
+                            if (patrimonio.DataAquisicao != null)
                             {
-                                var porcentagem = (patrimonio.Produto.Categoria.TaxaPorcentagemDepreciacao / 100);
 
-                                var taxa = (patrimonio.Produto.Valor * (decimal)porcentagem);
+                                var dataExpiracao = patrimonio.DataAquisicao.Value.AddYears(patrimonio.Produto.Categoria.PrazoVidaUtilGeral);
 
-                                var valorMensal = (taxa / 12);
+                                patrimonio.ProdutoDataVidaUtilExpiracao = dataExpiracao;
 
-                                patrimonio.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
+                                var dataValida = DateTime.Parse(patrimonio.ProdutoDataVidaUtilExpiracao.ToString());
+
+                                if (dataValida > DateTime.Now)
+                                {
+                                    var porcentagem = (patrimonio.Produto.Categoria.TaxaPorcentagemDepreciacao / 100);
+
+                                    var taxa = (patrimonio.Produto.Valor * (decimal)porcentagem);
+
+                                    var valorMensal = (taxa / 12);
+
+                                    patrimonio.ValorDepreciadoMensal = Math.Round(valorMensal, 2);
+                                }
                             }
                         }
                     }

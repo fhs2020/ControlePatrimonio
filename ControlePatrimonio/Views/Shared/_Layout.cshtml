@@ -23,11 +23,18 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Empresa", "Index", "Empresa")</li>
-                        <li>@Html.ActionLink("Filial", "Index", "Filial")</li>
-                        <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+
+                        if (User.Identity.Name == "flaviorichman@nfl.com" || User.Identity.Name == "gerencia.ti@repnovageracao.com.br" || 
+                            User.Identity.Name == "ti@repnovageracao.com.br" ||
+                            User.Identity.Name == "gizelyacampos@hotmail.com")
+                        {
+                            <li>@Html.ActionLink("Empresa", "Index", "Empresa")</li>
+                            <li>@Html.ActionLink("Filial", "Index", "Filial")</li>
+                            <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+                            <li>@Html.ActionLink("Depreciação", "Depreciacao", "Patrimonio")</li>
+                        }
+
                         <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
-                        <li>@Html.ActionLink("Depreciação", "Depreciacao", "Patrimonio")</li>
                         <li>@Html.ActionLink("Fornecedor", "Index", "Fornecedor")</li>
                         <li>@Html.ActionLink("Cadastrar Patrimonio", "Index", "Patrimonio")</li>
                         @*<li>@Html.ActionLink("Sobre", "About", "Home")</li>*@

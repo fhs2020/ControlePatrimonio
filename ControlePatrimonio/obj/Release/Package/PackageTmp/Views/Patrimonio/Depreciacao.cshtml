@@ -55,6 +55,9 @@
 
     @foreach (var item in Model)
     {
+
+        if (!string.IsNullOrEmpty(item.NotaFiscal))
+        {
         <tr>
             <td>
                 @item.Produto.Categoria.TipoCategoria.ToUpper()
@@ -88,6 +91,7 @@
                 @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
             </td>
         </tr>
+        }
     }
 
 </table>

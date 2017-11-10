@@ -21,7 +21,7 @@ namespace ControlePatrimonio.Models
         public String NotaFiscal { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DataAquisicao { get; set; }
+        public DateTime? DataAquisicao { get; set; }
 
         public DateTime DataCadastro { get; set; }
         public String Descricao { get; set; }

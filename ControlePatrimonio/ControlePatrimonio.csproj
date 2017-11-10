@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201711081546537_Campo nota fiscal na classe Patrimonio.Designer.cs">
       <DependentUpon>201711081546537_Campo nota fiscal na classe Patrimonio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711101338329_DataAquisicao nullable.cs" />
+    <Compile Include="Migrations\201711101338329_DataAquisicao nullable.Designer.cs">
+      <DependentUpon>201711101338329_DataAquisicao nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -545,6 +549,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711081546537_Campo nota fiscal na classe Patrimonio.resx">
       <DependentUpon>201711081546537_Campo nota fiscal na classe Patrimonio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101338329_DataAquisicao nullable.resx">
+      <DependentUpon>201711101338329_DataAquisicao nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

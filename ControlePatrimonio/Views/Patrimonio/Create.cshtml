@@ -12,6 +12,8 @@
 {
     @Html.AntiForgeryToken()
 
+    <input type="hidden" id="refresh" value="no">
+
     <div class="form-horizontal">
         <h4>Patrimonio</h4>
         <hr />
@@ -165,14 +167,39 @@
 </div>
 
 @section Scripts {
-
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
-
+    
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
             $("#DataAquisicao").inputmask("mask", { "mask": "99/99/9999" });
+
+            debugger;
+            var input = $('#refresh').val();
+            //input == 'yes' ? window.location = "/Patrimonio/Create" : input = 'yes';
+
+            if (input == "no") {
+                $('#refresh').val("yes");
+            }
+            else {
+                $('#refresh').val("no"); location.reload(true);
+            }
+        });
+
+        $("#DataAquisicao").focusout(function () {
+            var data = $("#DataAquisicao").val();
+            var date = new Date(data.split('/').reverse().join('/'));
+
+            var dataHoje = new Date();
+            var today = dataHoje.getFullYear();
+            var year = date.getFullYear();
+
+            if (year < 2000 || year > today) {
+
+                alert("Data Aquisição invalida!");
+            }
         });
 
 

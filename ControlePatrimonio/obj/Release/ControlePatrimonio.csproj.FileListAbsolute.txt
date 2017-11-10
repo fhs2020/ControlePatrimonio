@@ -138,3 +138,4 @@ C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Re
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Novos_atributos_class_Patrimonio.resources
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.Mudança_na_DataDeAquisição.resources
 C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.CamponotafiscalnaclassePatrimonio.resources
+C:\Users\usr_developer\source\repos\ControlePatrimonio\ControlePatrimonio\obj\Release\ControlePatrimonio.Migrations.DataAquisicaonullable.resources
